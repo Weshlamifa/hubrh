@@ -10,7 +10,7 @@ import { HeaderComponent } from './header/header.component';
 
 
 const appRoutes: Routes = [
-  
+  { path: 'collaborateurs', component: CollaborateursComponent},
 ];
 
 @NgModule({

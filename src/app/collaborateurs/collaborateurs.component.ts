@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, Input,  OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-collaborateurs',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollaborateursComponent implements OnInit {
 
+  @Input() nom: string;
+  @Input() prenom: string;
+  @Input() email: string;
+  
   constructor() { }
 
   ngOnInit() {
