@@ -5,7 +5,7 @@ import { DataTableDataSource } from './data-table-datasource';
 @Component({
   selector: 'app-collaborateurs',
   templateUrl: './collaborateurs.component.html',
-  styleUrls: ['./collaborateurs.component.css']
+  styleUrls: ['./collaborateurs.component.css', './navigationbar.component.css']
 })
 export class CollaborateursComponent implements OnInit {
 
