@@ -5,18 +5,16 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
-  name: string;
-  id: number;
-  amount: number;
+  nom: string;
+  prenom: string;
+  email: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {id: 1, name: 'Hydrogen', amount: 10},
-  {id: 2, name: 'Helium', amount: 11},
-  {id: 3, name: 'Lithium', amount: 20},
-  {id: 4, name: 'Beryllium', amount: 30},
-  {id: 5, name: 'Boron', amount: 5}
+  {nom: 'LORET', prenom: 'Alexis', email: 'a.loret@groupeonepoint.com'},
+  {nom: 'QUESTEL', prenom: 'Louis', email: 'l.questel@groupeonepoint.com'},
+  {nom: 'MELO', prenom: 'Prenom', email: 'a.melo@groupeonepoint.com'}
 ];
 
 /**
@@ -80,9 +78,9 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'amount': return compare(+a.amount, +b.amount, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'nom': return compare(a.nom, b.nom, isAsc);
+        case 'prenom': return compare(a.prenom, b.prenom, isAsc);
+        case 'email': return compare(a.email, b.email, isAsc);
         default: return 0;
       }
     });

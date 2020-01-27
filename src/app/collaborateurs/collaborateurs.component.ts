@@ -14,7 +14,7 @@ export class CollaborateursComponent implements OnInit {
   dataSource: DataTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'amount'];
+  displayedColumns = ['nom', 'prenom', 'email'];
 
   ngOnInit() {
     this.dataSource = new DataTableDataSource(this.paginator, this.sort);
