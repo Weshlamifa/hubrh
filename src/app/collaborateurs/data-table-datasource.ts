@@ -2,6 +2,8 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
@@ -22,12 +24,30 @@ const EXAMPLE_DATA: DataTableItem[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
+@Injectable()
 export class DataTableDataSource extends DataSource<DataTableItem> {
   data: DataTableItem[] = EXAMPLE_DATA;
-
+appareilsSubject = new Subject<any[]>(); 
   constructor(private paginator: MatPaginator, private sort: MatSort) {
     super();
   }
+
+   emitAppareilSubject() {
+    this.appareilsSubject.next(this.data.slice());
+  }
+
+  addCollaborateur(nom: string, prenom: string, email: string) {
+    const collaborateurObject = {
+      nom: '',
+	  prenom: '',
+	  email: ''
+    };
+    collaborateurObject.nom = nom;
+    collaborateurObject.prenom = prenom;
+    collaborateurObject.email = email;
+    this.data.push(collaborateurObject);
+    this.emitAppareilSubject();
+}
 
   /**
    * Connect this data source to the table. The table will only update when

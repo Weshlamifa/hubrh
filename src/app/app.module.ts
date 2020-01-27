@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
 
 import { AppComponent } from './app.component';
@@ -8,9 +8,11 @@ import { CollaborateursComponent } from './collaborateurs/collaborateurs.compone
 import { Routes, RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, 
-         MatSortModule, MatTableModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule } from "@angular/material";
+         MatSortModule, MatTableModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, MatDialog, MatDialogModule, MatPaginator, MatDialogContainer } from "@angular/material";
 import { LayoutModule } from '@angular/cdk/layout';
-
+import { ModalAddCollaborateurComponent } from './modal-add-collaborateur/modal-add-collaborateur.component';
+import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTableDataSource } from './collaborateurs/data-table-datasource';
 
 const appRoutes: Routes = [
   { path: 'collaborateurs', component: CollaborateursComponent},
@@ -20,7 +22,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CollaborateursComponent,
-    HeaderComponent
+    HeaderComponent,
+    ModalAddCollaborateurComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +41,14 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatIconModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    MatDialogModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DataTableDataSource, MatPaginator],
+  bootstrap: [AppComponent],
+
+  entryComponents: [ModalAddCollaborateurComponent]
 })
 export class AppModule { }
