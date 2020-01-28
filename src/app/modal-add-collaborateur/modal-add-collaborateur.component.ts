@@ -29,6 +29,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
     const firstname = this.contactFormModalFirstName.value;
     const email = this.contactFormModalEmail.value;
     this.collaborateurs.add(name, firstname, email);
+    this.validatingForm.reset();
   }
 
   get contactFormModalName() {

@@ -12,7 +12,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body mx-3">
+      <div class="modal-body mx-3" style="align-self: center">
         <div class="md-form mb-5">
           <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
           <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalName">
@@ -27,7 +27,6 @@
           </mdb-success>
         </div>
 
-        <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
           <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalFirstName">
@@ -45,9 +44,9 @@
 
         <div class="md-form mb-5">
           <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-          <input type="email" id="form29" class="form-control" mdbInput mdbValidate
+          <input type="email" id="form34" class="form-control" mdbInput mdbValidate
                  [formControl]="contactFormModalEmail">
-          <label for="form29">Adresse mail</label>
+          <label for="form34">Adresse mail</label>
           <mdb-error
             *ngIf="contactFormModalEmail.invalid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">
             Input invalid
