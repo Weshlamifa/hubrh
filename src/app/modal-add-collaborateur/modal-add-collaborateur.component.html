@@ -91,7 +91,7 @@
       </div>
       <div class="modal-footer d-flex justify-content-center">
         
-        <button mdbBtn color="black" class="waves-light" mdbWavesEffect (click)="onSubmit()"><i class="fas fa-plus"></i>&nbsp;   Ajouter
+        <button [ngClass]="{disabled : !(contactFormModalEmail.valid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)) || !(contactFormModalFirstName.valid && (contactFormModalName.dirty || contactFormModalFirstName.touched)) || !(contactFormModalName.valid && (contactFormModalName.dirty || contactFormModalName.touched))}" mdbBtn color="black" class="waves-light" mdbWavesEffect (click)="onSubmit(); frame.hide()"><i class="fas fa-plus"></i>&nbsp;   Ajouter
           
         </button>
       </div>

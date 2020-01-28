@@ -15,7 +15,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
   ngOnInit() {
     this.validatingForm = new FormGroup({
       contactFormModalName: new FormControl('', Validators.required),
-      contactFormModalEmail: new FormControl('', Validators.email),
+      contactFormModalEmail: new FormControl('', [Validators.required, Validators.email]),
       contactFormModalFirstName: new FormControl('', Validators.required),
       //contactFormModalSubject: new FormControl('', Validators.required),
      // contactFormModalMessage: new FormControl('', Validators.required)
@@ -24,7 +24,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
 
   constructor(private collaborateurs: CollaborateursComponent) { }
 
-  onSubmit(form: FormGroup, ) {
+  onSubmit(form: FormGroup ) {
     const name = this.contactFormModalName.value;
     const firstname = this.contactFormModalFirstName.value;
     const email = this.contactFormModalEmail.value;

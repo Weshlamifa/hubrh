@@ -18,8 +18,6 @@ export class CollaborateursComponent {
       { id: 3, name: 'MELO', firstname: 'Prenom', email: 'prenom.melo@bidule.fr' }
     ];
 
-    
-
     updateList(id: number, property: string, event: any) {
       const editField = event.target.textContent;
       this.personList[id][property] = editField;
@@ -32,12 +30,8 @@ export class CollaborateursComponent {
     add(name: string, firstname:string, email:string) {
         let last:any = this.personList[this.personList.length-1];
         const person = {id:last, name:name, firstname:firstname, email:email};
-        this.personList.push(person);
-       
-      
+        this.personList.push(person);     
     }
-
-    
 
     changeValue(id: number, property: string, event: any) {
       this.editField = event.target.textContent;
