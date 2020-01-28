@@ -1,5 +1,5 @@
 
-import { Component, Input,  OnInit, ViewChild, SystemJsNgModuleLoader } from '@angular/core';
+import { Component, Input,  OnInit, ViewChild, SystemJsNgModuleLoader, ElementRef, Injectable } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { DataTableDataSource } from './data-table-datasource';
 @Component({
@@ -7,28 +7,39 @@ import { DataTableDataSource } from './data-table-datasource';
   templateUrl: './collaborateurs.component.html',
   styleUrls: ['./collaborateurs.component.css', './navigationbar.component.css']
 })
-export class CollaborateursComponent implements OnInit {
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static : true}) sort: MatSort;
-  dataSource: DataTableDataSource;
+@Injectable()
+export class CollaborateursComponent {
 
-  //barre de recherche
-  data : string;
+  editField: string;
+    personList: Array<any> = [
+      { id: 1, name: 'LORET', firstname: 'Alexis', email: 'alexis.loret@bidule.fr' },
+      { id: 2, name: 'QUESTEL', firstname: 'Louis', email: 'louis.questel@bidule.fr' },
+      { id: 3, name: 'MELO', firstname: 'Prenom', email: 'prenom.melo@bidule.fr' }
+    ];
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['nom', 'prenom', 'email'];
+    
 
-  ngOnInit() {
-    this.dataSource = new DataTableDataSource(this.paginator, this.sort);
-  }
+    updateList(id: number, property: string, event: any) {
+      const editField = event.target.textContent;
+      this.personList[id][property] = editField;
+    }
 
-  change() {
-    // requete http sur la bdd
-    console.log(this.data);
-  }
+    remove(id: any) {
+      this.personList.splice(id, 1);
+    }
 
-  research(test) {
-    console.log(test);
-  }
+    add(name: string, firstname:string, email:string) {
+        let last:any = this.personList[this.personList.length-1];
+        const person = {id:last, name:name, firstname:firstname, email:email};
+        this.personList.push(person);
+       
+      
+    }
+
+    
+
+    changeValue(id: number, property: string, event: any) {
+      this.editField = event.target.textContent;
+    }
 }

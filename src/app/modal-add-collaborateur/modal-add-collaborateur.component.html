@@ -1,4 +1,4 @@
-<button style="float: right; margin-top: -30px;" type="button" mdbBtn color="black" rounded="true" data-toggle="modal" data-target="#basicExample"
+ <button style="float: right; margin-top: 0px;" type="button" mdbBtn color="black" rounded="true" data-toggle="modal" data-target="#basicExample"
         (click)="frame.show()" mdbWavesEffect>Ajouter un collaborateur
 </button>
 
@@ -7,7 +7,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Write to us</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Ajouter un collaborateur</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,7 +16,7 @@
         <div class="md-form mb-5">
           <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
           <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalName">
-          <label for="form34">Your name</label>
+          <label for="form34">Nom</label>
           <mdb-error
             *ngIf="contactFormModalName.invalid && (contactFormModalName.dirty || contactFormModalName.touched)">Input
             invalid
@@ -27,11 +27,27 @@
           </mdb-success>
         </div>
 
+        <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalFirstName">
+          <label for="form34">Prenom</label>
+          <mdb-error
+            *ngIf="contactFormModalFirstName.invalid && (contactFormModalName.dirty || contactFormModalFirstName.touched)">Input
+            invalid
+          </mdb-error>
+          <mdb-success
+            *ngIf="contactFormModalFirstName.valid && (contactFormModalName.dirty || contactFormModalFirstName.touched)">Input
+            valid
+          </mdb-success>
+        </div>
+
+
         <div class="md-form mb-5">
           <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
           <input type="email" id="form29" class="form-control" mdbInput mdbValidate
                  [formControl]="contactFormModalEmail">
-          <label for="form29">Your email</label>
+          <label for="form29">Adresse mail</label>
           <mdb-error
             *ngIf="contactFormModalEmail.invalid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">
             Input invalid
@@ -41,7 +57,7 @@
             valid
           </mdb-success>
         </div>
-
+<!--
         <div class="md-form mb-5">
           <mdb-icon fas icon="tag" class="prefix grey-text"></mdb-icon>
           <input type="text" id="form32" class="form-control" mdbInput mdbValidate
@@ -71,11 +87,12 @@
             Input valid
           </mdb-success>
         </div>
-
+ -->
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button mdbBtn color="unique" class="waves-light" mdbWavesEffect>Send
-          <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+        
+        <button mdbBtn color="black" class="waves-light" mdbWavesEffect (click)="onSubmit()"><i class="fas fa-plus"></i>&nbsp;   Ajouter
+          
         </button>
       </div>
     </div>

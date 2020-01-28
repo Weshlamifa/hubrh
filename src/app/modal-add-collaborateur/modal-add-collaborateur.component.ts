@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { DataTableDataSource } from '../collaborateurs/data-table-datasource';
+import { CollaborateursComponent } from '../collaborateurs/collaborateurs.component';
+
 @Component({
   selector: 'app-modal-add-collaborateur',
   templateUrl: './modal-add-collaborateur.component.html',
@@ -13,13 +16,27 @@ export class ModalAddCollaborateurComponent implements OnInit {
     this.validatingForm = new FormGroup({
       contactFormModalName: new FormControl('', Validators.required),
       contactFormModalEmail: new FormControl('', Validators.email),
-      contactFormModalSubject: new FormControl('', Validators.required),
-      contactFormModalMessage: new FormControl('', Validators.required)
+      contactFormModalFirstName: new FormControl('', Validators.required),
+      //contactFormModalSubject: new FormControl('', Validators.required),
+     // contactFormModalMessage: new FormControl('', Validators.required)
     });
+  }
+
+  constructor(private collaborateurs: CollaborateursComponent) { }
+
+  onSubmit(form: FormGroup, ) {
+    const name = this.contactFormModalName.value;
+    const firstname = this.contactFormModalFirstName.value;
+    const email = this.contactFormModalEmail.value;
+    this.collaborateurs.add(name, firstname, email);
   }
 
   get contactFormModalName() {
     return this.validatingForm.get('contactFormModalName');
+  }
+
+  get contactFormModalFirstName() {
+    return this.validatingForm.get('contactFormModalFirstName');
   }
 
   get contactFormModalEmail() {

@@ -1,37 +1,36 @@
-<head><meta meta charset="utf-8"></head>
-
-  <div class="search">
-    <input [(ngModel)]="data" (ngModelChange)="change()" type="text" class="searchTerm" placeholder="recherche">
+<div class="card">
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2">
+        <app-modal-add-collaborateur></app-modal-add-collaborateur>
+        
+      </span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Nom</th>
+          <th class="text-center">Prenom</th>
+          <th class="text-center">Adresse mail</th>
+          <th class="text-center">Remove</th>
+        </tr>
+        <tr *ngFor="let person of personList; let id = index">
+          <td>
+            <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">{{person.firstname}}</span>
+          </td>
+          <td>
+            <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">{{person.email}}</span>
+          </td>
+        
+          
+          <td>
+            <span class="table-remove">
+              <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
-
-<div class="mat-elevation-z8 data-table">
-	<mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
-    
-    <!-- Id Column -->
-    <ng-container matColumnDef="nom">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.nom}}</mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="prenom">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Prenom</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.prenom}}</mat-cell>
-    </ng-container>
-
-    <!-- Amount Column -->
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Adresse</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.email}}</mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-  <mat-paginator #paginator
-    [length]="dataSource.data.length"
-    [pageIndex]="0"
-    [pageSize]="50"
-    [pageSizeOptions]="[25, 50, 100, 250]">
-  </mat-paginator>
 </div>
