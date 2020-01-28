@@ -13,7 +13,7 @@
           <th class="text-center">Nom</th>
           <th class="text-center">Prenom</th>
           <th class="text-center">Adresse mail</th>
-          <th class="text-center">Remove</th>
+          <th class="text-center">Actions</th>
         </tr>
         <ng-container *ngIf="data === ''">
           <tr  *ngFor="let person of personList; let id = index">
@@ -28,7 +28,7 @@
             </td>  
             <td>
               <span class="table-remove">
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)"><i class="fas fa-trash-alt"></i></button>
               </span>
             </td>
           </tr>
@@ -47,7 +47,7 @@
             </td>  
             <td>
               <span class="table-remove">
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)"><i class="fas fa-trash-alt"></i></button>
               </span>
             </td>
           </tr>
