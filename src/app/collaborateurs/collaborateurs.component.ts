@@ -35,7 +35,7 @@ export class CollaborateursComponent {
     }
 
     add(name: string, firstname:string, email:string, date:string, prestataire:boolean, role:string, statut:string, linkcv: string, comments:string) {
-        const person = {id:this.personList.length+1, name:name, firstname:firstname, email:email};
+        const person = {id:this.personList.length+1, name:name, firstname:firstname, email:email, date:date, prestataire:prestataire, role:role, statut:statut, linkcv:linkcv, comments:comments};
         this.personList.push(person);
         console.log(this.personList);
     }

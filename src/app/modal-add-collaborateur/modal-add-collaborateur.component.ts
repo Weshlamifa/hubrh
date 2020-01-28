@@ -10,8 +10,9 @@ import { CollaborateursComponent } from '../collaborateurs/collaborateurs.compon
 export class ModalAddCollaborateurComponent implements OnInit {
 
   validatingForm: FormGroup;
-
+  prestataire: boolean = false;  
   ngOnInit() {
+    this.prestataire = false; 
     this.validatingForm = new FormGroup({
       contactFormModalName: new FormControl('', Validators.required),
       contactFormModalEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -26,21 +27,27 @@ export class ModalAddCollaborateurComponent implements OnInit {
     });
   }
 
-  constructor(private collaborateurs: CollaborateursComponent) { }
+  constructor(private collaborateurs: CollaborateursComponent) {this.prestataire = false;  }
 
   onSubmit(form: FormGroup ) {
     const name = this.contactFormModalName.value;
     const firstname = this.contactFormModalFirstName.value;
     const email = this.contactFormModalEmail.value;
     const date = this.contactFormModalDate.value;
-    const prestataire = this.contactFormModalPrestataire.value;
+    if(this.prestataire != null) {
+      this.prestataire = this.contactFormModalPrestataire.value;
+    }
     const role = this.contactFormModalRole.value;
     const statut = this.contactFormModalStatut.value;
     const linkcv = this.contactFormModalLinkCV.value;
     const photo = this.contactFormModalPhoto.value;
     const comments = this.contactFormModalComments.value;
 
-    this.collaborateurs.add(name, firstname, email, date ,prestataire, role, statut, linkcv, comments);
+    this.collaborateurs.add(name, firstname, email, date ,this.prestataire, role, statut, linkcv, comments);
+    this.validatingForm.reset();
+  }
+
+  onClose() {
     this.validatingForm.reset();
   }
 
