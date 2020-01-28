@@ -16,8 +16,12 @@ export class ModalAddCollaborateurComponent implements OnInit {
       contactFormModalName: new FormControl('', Validators.required),
       contactFormModalEmail: new FormControl('', [Validators.required, Validators.email]),
       contactFormModalFirstName: new FormControl('', Validators.required),
-      //contactFormModalSubject: new FormControl('', Validators.required),
-     // contactFormModalMessage: new FormControl('', Validators.required)
+      contactFormModalPrestataire: new FormControl('', Validators.required),
+      contactFormModalRole: new FormControl('', Validators.required),
+      contactFormModalStatut: new FormControl('', Validators.required),
+      contactFormModalLinkCV: new FormControl(''),
+      contactFormModalPhoto: new FormControl(''),
+      contactFormModalComments: new FormControl('')
     });
   }
 
@@ -27,7 +31,14 @@ export class ModalAddCollaborateurComponent implements OnInit {
     const name = this.contactFormModalName.value;
     const firstname = this.contactFormModalFirstName.value;
     const email = this.contactFormModalEmail.value;
-    this.collaborateurs.add(name, firstname, email);
+    const prestataire = this.contactFormModalPrestataire.value;
+    const role = this.contactFormModalRole.value;
+    const statut = this.contactFormModalStatut.value;
+    const linkcv = this.contactFormModalLinkCV.value;
+    const photo = this.contactFormModalPhoto.value;
+    const comments = this.contactFormModalComments.value;
+
+    this.collaborateurs.add(name, firstname, email, prestataire, role, statut, linkcv, comments);
     this.validatingForm.reset();
   }
 
@@ -43,12 +54,28 @@ export class ModalAddCollaborateurComponent implements OnInit {
     return this.validatingForm.get('contactFormModalEmail');
   }
 
-  get contactFormModalSubject() {
-    return this.validatingForm.get('contactFormModalSubject');
+  get contactFormModalPrestataire() {
+    return this.validatingForm.get('contactFormModalPrestataire');
   }
 
-  get contactFormModalMessage() {
-    return this.validatingForm.get('contactFormModalMessage');
+  get contactFormModalRole() {
+    return this.validatingForm.get('contactFormModalRole');
+  }
+
+  get contactFormModalStatut() {
+    return this.validatingForm.get('contactFormModalStatut');
+  }
+
+  get contactFormModalLinkCV() {
+    return this.validatingForm.get('contactFormModalLinkCV');
+  }
+
+  get contactFormModalPhoto() {
+    return this.validatingForm.get('contactFormModalPhoto');
+  }
+
+  get contactFormModalComments() {
+    return this.validatingForm.get('contactFormModalComments');
   }
 }
 
