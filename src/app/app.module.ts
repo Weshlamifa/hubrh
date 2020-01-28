@@ -13,7 +13,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { ModalAddCollaborateurComponent } from './modal-add-collaborateur/modal-add-collaborateur.component';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableDataSource } from './collaborateurs/data-table-datasource';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 const appRoutes: Routes = [
   { path: 'collaborateurs', component: CollaborateursComponent},
 ];
@@ -44,6 +44,7 @@ const appRoutes: Routes = [
     MatDialogModule,
     BrowserAnimationsModule,
     FormsModule,
+    MDBBootstrapModule.forRoot(),
     ReactiveFormsModule
   ],
   providers: [DataTableDataSource, MatPaginator],

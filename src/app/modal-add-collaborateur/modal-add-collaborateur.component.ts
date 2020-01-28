@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { NgForm, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DataTableDataSource } from '../collaborateurs/data-table-datasource';
-
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-modal-add-collaborateur',
   templateUrl: './modal-add-collaborateur.component.html',
@@ -10,29 +7,31 @@ import { DataTableDataSource } from '../collaborateurs/data-table-datasource';
 })
 export class ModalAddCollaborateurComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ModalAddCollaborateurComponent>, private collaborateursService: DataTableDataSource) { }
+  validatingForm: FormGroup;
 
   ngOnInit() {
+    this.validatingForm = new FormGroup({
+      contactFormModalName: new FormControl('', Validators.required),
+      contactFormModalEmail: new FormControl('', Validators.email),
+      contactFormModalSubject: new FormControl('', Validators.required),
+      contactFormModalMessage: new FormControl('', Validators.required)
+    });
   }
 
-  // When the user clicks the action button a.k.a. the logout button in the\
-  // modal, show an alert and followed by the closing of the modal
-  actionFunction() {
-    alert("You have logged out.");
-    this.closeModal();
+  get contactFormModalName() {
+    return this.validatingForm.get('contactFormModalName');
   }
 
-  // If the user clicks the cancel button a.k.a. the go back button, then\
-  // just close the modal
-  closeModal() {
-    this.dialogRef.close();
+  get contactFormModalEmail() {
+    return this.validatingForm.get('contactFormModalEmail');
   }
 
-  onSubmit(form: NgForm) {
-    const nom = form.value['nom'];
-    const prenom = form.value['prenom'];
-    const email = form.value['email'];
-    this.collaborateursService.addCollaborateur(nom, prenom, email);
-    this.closeModal();
+  get contactFormModalSubject() {
+    return this.validatingForm.get('contactFormModalSubject');
+  }
+
+  get contactFormModalMessage() {
+    return this.validatingForm.get('contactFormModalMessage');
   }
 }
+
