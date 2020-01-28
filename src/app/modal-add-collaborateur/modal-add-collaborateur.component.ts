@@ -16,6 +16,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
       contactFormModalName: new FormControl('', Validators.required),
       contactFormModalEmail: new FormControl('', [Validators.required, Validators.email]),
       contactFormModalFirstName: new FormControl('', Validators.required),
+      contactFormModalDate: new FormControl('', Validators.required),
       contactFormModalPrestataire: new FormControl('', Validators.required),
       contactFormModalRole: new FormControl('', Validators.required),
       contactFormModalStatut: new FormControl('', Validators.required),
@@ -31,6 +32,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
     const name = this.contactFormModalName.value;
     const firstname = this.contactFormModalFirstName.value;
     const email = this.contactFormModalEmail.value;
+    const date = this.contactFormModalDate.value;
     const prestataire = this.contactFormModalPrestataire.value;
     const role = this.contactFormModalRole.value;
     const statut = this.contactFormModalStatut.value;
@@ -38,7 +40,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
     const photo = this.contactFormModalPhoto.value;
     const comments = this.contactFormModalComments.value;
 
-    this.collaborateurs.add(name, firstname, email, prestataire, role, statut, linkcv, comments);
+    this.collaborateurs.add(name, firstname, email, date ,prestataire, role, statut, linkcv, comments);
     this.validatingForm.reset();
   }
 
@@ -52,6 +54,10 @@ export class ModalAddCollaborateurComponent implements OnInit {
 
   get contactFormModalEmail() {
     return this.validatingForm.get('contactFormModalEmail');
+  }
+
+  get contactFormModalDate() {
+    return this.validatingForm.get('contactFormModalDate');
   }
 
   get contactFormModalPrestataire() {

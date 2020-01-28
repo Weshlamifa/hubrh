@@ -34,10 +34,10 @@ export class CollaborateursComponent {
       this.personList.splice(id, 1);
     }
 
-    add(name: string, firstname:string, email:string) {
-        let last:any = this.personList[this.personList.length-1];
-        const person = {id:last, name:name, firstname:firstname, email:email};
+    add(name: string, firstname:string, email:string, date:string, prestataire:boolean, role:string, statut:string, linkcv: string, comments:string) {
+        const person = {id:this.personList.length+1, name:name, firstname:firstname, email:email};
         this.personList.push(person);
+        console.log(this.personList);
     }
 
     changeValue(id: number, property: string, event: any) {

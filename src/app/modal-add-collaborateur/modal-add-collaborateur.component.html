@@ -32,7 +32,21 @@
           <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalFirstName">
           <label for="form34">Prenom</label>
           <mdb-error
-            *ngIf="contactFormModalFirstName.invalid && (contactFormModalName.dirty || contactFormModalFirstName.touched)">Input
+            *ngIf="contactFormModalFirstName.invalid && (contactFormModalFirstName.dirty || contactFormModalFirstName.touched)">Input
+            invalid
+          </mdb-error>
+          <mdb-success
+            *ngIf="contactFormModalFirstName.valid && (contactFormModalFirstName.dirty || contactFormModalFirstName.touched)">Input
+            valid
+          </mdb-success>
+        </div>
+
+        <div class="md-form mb-5">
+          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalDate">
+          <label for="form34">Date d'entree</label>
+          <mdb-error
+            *ngIf="contactFormModalDate.invalid && (contactFormModalDate.dirty || contactFormModalFirstName.touched)">Input
             invalid
           </mdb-error>
           <mdb-success
