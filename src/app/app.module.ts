@@ -12,8 +12,9 @@ import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
 import { LayoutModule } from '@angular/cdk/layout';
 import { ModalAddCollaborateurComponent } from './modal-add-collaborateur/modal-add-collaborateur.component';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DataTableDataSource } from './collaborateurs/data-table-datasource';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FullTextSearchService } from './services/full-text-search.service';
+
 const appRoutes: Routes = [
   { path: 'collaborateurs', component: CollaborateursComponent},
 ];
@@ -46,8 +47,8 @@ const appRoutes: Routes = [
     FormsModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule
-  ],
-  providers: [DataTableDataSource, MatPaginator],
+    ],
+  providers: [ MatPaginator, FullTextSearchService ],
   bootstrap: [AppComponent],
 
   entryComponents: [ModalAddCollaborateurComponent]

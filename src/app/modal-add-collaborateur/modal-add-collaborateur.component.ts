@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { DataTableDataSource } from '../collaborateurs/data-table-datasource';
 import { CollaborateursComponent } from '../collaborateurs/collaborateurs.component';
 
 @Component({
