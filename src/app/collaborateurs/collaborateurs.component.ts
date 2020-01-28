@@ -31,7 +31,18 @@ export class CollaborateursComponent {
     }
 
     remove(id: any) {
-      this.personList.splice(id, 1);
+      var i = 0;
+      for (let person of this.personList) {
+        if ( person.id === id ) {
+          this.personList.splice(i,1);
+          break;
+        }
+        i++;
+      }
+      if (this.data !== '') {
+        this.change();
+      }
+      console.log(id);
     }
 
     add(name: string, firstname:string, email:string, date:string, prestataire:boolean, role:string, statut:string, linkcv: string, comments:string) {
