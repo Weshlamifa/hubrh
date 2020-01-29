@@ -1,72 +1,73 @@
 <div class="card">
   <div class="card-body">
     <div id="table" class="table-editable">
-      <span class="table-add float-right mb-3 mr-2">
+      <span class="test">
         <app-modal-add-collaborateur></app-modal-add-collaborateur>
-        
       </span>
       <div class="search">
         <input [(ngModel)]="data" (ngModelChange)="change()" type="text" class="searchTerm" placeholder="recherche">
       </div>
-      <table class="table table-bordered table-responsive-md table-striped text-center">
-        <tr>
-          <th class="text-center">Nom</th>
-          <th class="text-center">Prenom</th>
-          <th class="text-center">Adresse mail</th>
-          <th class="text-center">Actions</th>
-        </tr>
-        <ng-container *ngIf="data === ''">
-          <tr  *ngFor="let person of personList; let id = index">
-            <td>
-              <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
-            </td>
-            <td>
-              <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">{{person.firstname}}</span>
-            </td>
-            <td>
-              <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">{{person.email}}</span>
-            </td>  
-            <td>
-              <span class="table-remove">
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
-                  <i class="fas fa-pen"></i>
-                </button>
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
-                  <i class="fas fa-search"></i>                </button>
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(person.id)">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </span>
-            </td>
+      <div class="tab-container">
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Nom</th>
+            <th class="text-center">Prenom</th>
+            <th class="text-center">Adresse mail</th>
+            <th class="text-center">Actions</th>
           </tr>
-        </ng-container>
-        
-         <ng-container *ngIf="data !== ''">
-          <tr  *ngFor="let person of res; let id = index">
-            <td>
-              <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
-            </td>
-            <td>
-              <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">{{person.firstname}}</span>
-            </td>
-            <td>
-              <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">{{person.email}}</span>
-            </td>  
-            <td>
-              <span class="table-remove">
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
-                  <i class="fas fa-pen"></i>
-                </button>
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
-                  <i class="fas fa-search"></i>                </button>
-                <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(person.id)">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </span>
-            </td>
-          </tr>
-        </ng-container>
-      </table>
+          <ng-container *ngIf="data === ''">
+            <tr  *ngFor="let person of personList; let id = index">
+              <td>
+                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
+              </td>
+              <td>
+                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">{{person.firstname}}</span>
+              </td>
+              <td>
+                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">{{person.email}}</span>
+              </td>  
+              <td>
+                <span class="table-remove">
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
+                    <i class="fas fa-pen"></i>
+                  </button>
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
+                    <i class="fas fa-search"></i>                </button>
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(person.id)">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </span>
+              </td>
+            </tr>
+          </ng-container>
+          
+          <ng-container *ngIf="data !== ''">
+            <tr  *ngFor="let person of res; let id = index">
+              <td>
+                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
+              </td>
+              <td>
+                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">{{person.firstname}}</span>
+              </td>
+              <td>
+                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">{{person.email}}</span>
+              </td>  
+              <td>
+                <span class="table-remove">
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
+                    <i class="fas fa-pen"></i>
+                  </button>
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
+                    <i class="fas fa-search"></i>                </button>
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(person.id)">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </span>
+              </td>
+            </tr>
+          </ng-container>
+        </table>
+      </div>
     </div>
   </div>
 </div>

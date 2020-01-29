@@ -19,7 +19,19 @@ export class CollaborateursComponent {
     personList: Array<any> = [
       { id: 1, name: 'LORET', firstname: 'Alexis', email: 'alexis.loret@bidule.fr' },
       { id: 2, name: 'QUESTEL', firstname: 'Louis', email: 'louis.questel@bidule.fr' },
-      { id: 3, name: 'MELO', firstname: 'Prenom', email: 'prenom.melo@bidule.fr' }
+      { id: 3, name: 'radeau', firstname: 'Prenom', email: 'prenom.melo@bidule.fr' },
+      { id: 4, name: 'baetau', firstname: 'Alexis', email: 'alexis.loret@bidule.fr' },
+      { id: 5, name: 'melio', firstname: 'Louis', email: 'louis.questel@bidule.fr' },
+      { id: 6, name: 'scroll', firstname: 'Prenom', email: 'prenom.melo@bidule.fr' },
+      { id: 7, name: 'ami', firstname: 'Alexis', email: 'alexis.loret@bidule.fr' },
+      { id: 8, name: 'beti', firstname: 'Louis', email: 'louis.questel@bidule.fr' },
+      { id: 9, name: 'sami', firstname: 'Prenom', email: 'prenom.melo@bidule.fr' },
+      { id: 10, name: '1', firstname: 'Alexis', email: 'alexis.loret@bidule.fr' },
+      { id: 11, name: '2', firstname: 'Louis', email: 'louis.questel@bidule.fr' },
+      { id: 12, name: '3', firstname: 'Prenom', email: 'prenom.melo@bidule.fr' },
+      { id: 13, name: '7', firstname: 'Alexis', email: 'alexis.loret@bidule.fr' },
+      { id: 20, name: '5', firstname: 'Louis', email: 'louis.questel@bidule.fr' },
+      { id: 15, name: '8', firstname: 'Prenom', email: 'prenom.melo@bidule.fr' }
     ];
 
     constructor(private fullTextSearchService: FullTextSearchService) {}
