@@ -76,24 +76,36 @@ export class CollaborateursComponent {
   }
 
   lexicographicalSorting(attToSort: string){
-    console.log('TEST mg');
-    console.log('Loret'<'Loret');
-    this.personList.sort();
+    this.bubbleSortName();
   }
 
-  bubbleSort(): number[] {
-    this.personList = this.personList.slice(); // creates a copy of the array
+  bubbleSortName() {
 
     for(let i = 0; i < this.personList.length; i++) {
         for(let j = 0; j < this.personList.length - 1; j++) {
 
-            if(this.personList[j].name > this.personList[j + 1].name) {
+            if(this.personList[j].name.toUpperCase() > this.personList[j + 1].name.toUpperCase()) {
                 let swap = this.personList[j];
                 this.personList[j] = this.personList[j + 1];
                 this.personList[j + 1] = swap;
             }
         }
     }
-    return array;
-}
+    return this.personList;
+  }
+
+  bubbleSortFirstName() {
+
+    for(let i = 0; i < this.personList.length; i++) {
+        for(let j = 0; j < this.personList.length - 1; j++) {
+
+            if(this.personList[j].name.toUpperCase() > this.personList[j + 1].name.toUpperCase()) {
+                let swap = this.personList[j];
+                this.personList[j] = this.personList[j + 1];
+                this.personList[j + 1] = swap;
+            }
+        }
+    }
+    return this.personList;
+  }
 }
