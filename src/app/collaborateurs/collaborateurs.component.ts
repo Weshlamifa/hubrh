@@ -15,7 +15,6 @@ export class CollaborateursComponent {
 
   typeSorted:boolean =false; // retourne vrai les noms sont triés par ordre lexicographique
   typeSortedFN: boolean = false; // retourne vrai les prénoms sont triés par ordre lexicographique
-  editField: string;
   
   personList: Array<any> = [ // données de test à afficher dans le tableau des collaborateurs
     { id: 1, name: 'LORET', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
@@ -60,13 +59,9 @@ export class CollaborateursComponent {
 
     // ajoute un collaborateur dans la liste personList
     add(name: string, firstname:string, email:string, date:string, prestataire:boolean, role:string, statut:string, linkcv: string, comments:string) {
-        const person = {id:this.personList.length+1, name:name, firstname:firstname, email:email, date:date, prestataire:prestataire, role:role, statut:statut, linkcv:linkcv, comments:comments};
+        const person = {id:this.personList.length+1, name:name, firstname:firstname, email:email,isDelete:false , date:date, prestataire:prestataire, role:role, statut:statut, linkcv:linkcv, comments:comments};
         this.personList.push(person);
         console.log(this.personList);
-    }
-
-    changeValue(id: number, property: string, event: any) {
-      this.editField = event.target.textContent;
     }
 
     // Actualise l'affichage du tableau des "res" qui contient le résultat d'un recherche
