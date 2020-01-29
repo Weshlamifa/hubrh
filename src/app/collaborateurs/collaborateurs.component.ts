@@ -75,8 +75,11 @@ export class CollaborateursComponent {
     console.log(this.res);
   }
 
-  lexicographicalSorting(attToSort: string){
+  lexicographicalSorting() {
     this.bubbleSortName();
+  }
+  antiLexicographicalSorting() {
+    this.bubbleAntiSortName();
   }
 
   bubbleSortName() {
@@ -100,6 +103,36 @@ export class CollaborateursComponent {
         for(let j = 0; j < this.personList.length - 1; j++) {
 
             if(this.personList[j].name.toUpperCase() > this.personList[j + 1].name.toUpperCase()) {
+                let swap = this.personList[j];
+                this.personList[j] = this.personList[j + 1];
+                this.personList[j + 1] = swap;
+            }
+        }
+    }
+    return this.personList;
+  }
+
+  bubbleAntiSortName() {
+
+    for(let i = 0; i < this.personList.length; i++) {
+        for(let j = 0; j < this.personList.length - 1; j++) {
+
+            if(this.personList[j].name.toUpperCase() < this.personList[j + 1].name.toUpperCase()) {
+                let swap = this.personList[j];
+                this.personList[j] = this.personList[j + 1];
+                this.personList[j + 1] = swap;
+            }
+        }
+    }
+    return this.personList;
+  }
+
+  bubbleAntiSortFirstName() {
+
+    for(let i = 0; i < this.personList.length; i++) {
+        for(let j = 0; j < this.personList.length - 1; j++) {
+
+            if(this.personList[j].name.toUpperCase() < this.personList[j + 1].name.toUpperCase()) {
                 let swap = this.personList[j];
                 this.personList[j] = this.personList[j + 1];
                 this.personList[j + 1] = swap;
