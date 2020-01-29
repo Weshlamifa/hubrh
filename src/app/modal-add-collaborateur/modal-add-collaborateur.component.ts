@@ -11,6 +11,11 @@ export class ModalAddCollaborateurComponent implements OnInit {
 
   validatingForm: FormGroup;
   prestataire: boolean = false;  
+
+  /** A l'initialisation du formulaire, les variables sont mises à null sauf le prestaire. 
+   * En effet, c'est une checkbox qui est initialisée à false par défaut.
+   */
+
   ngOnInit() {
     this.prestataire = false; 
     this.validatingForm = new FormGroup({
@@ -31,6 +36,8 @@ export class ModalAddCollaborateurComponent implements OnInit {
 
   constructor(private collaborateurs: CollaborateursComponent) {this.prestataire = false;  }
 
+  /** Quand on valide le formulaire */
+
   onSubmit(form: FormGroup ) {
     
       const name = this.contactFormModalName.value;
@@ -48,9 +55,13 @@ export class ModalAddCollaborateurComponent implements OnInit {
       this.validatingForm.reset();   
   }
 
+  /** Quand on ferme le formulaire sans valider. Clic sur la croix ou le bouton annuler */
+
   onClose() {
     this.validatingForm.reset();
   }
+
+  /** Getters pour récupérer les valeurs mises dans le formulaire */
 
   get contactFormModalName() {
     return this.validatingForm.get('contactFormModalName');
