@@ -74,4 +74,26 @@ export class CollaborateursComponent {
     this.res = this.fullTextSearchService.transform(this.data, this.personList);
     console.log(this.res);
   }
+
+  lexicographicalSorting(attToSort: string){
+    console.log('TEST mg');
+    console.log('Loret'<'Loret');
+    this.personList.sort();
+  }
+
+  bubbleSort(): number[] {
+    this.personList = this.personList.slice(); // creates a copy of the array
+
+    for(let i = 0; i < this.personList.length; i++) {
+        for(let j = 0; j < this.personList.length - 1; j++) {
+
+            if(this.personList[j].name > this.personList[j + 1].name) {
+                let swap = this.personList[j];
+                this.personList[j] = this.personList[j + 1];
+                this.personList[j + 1] = swap;
+            }
+        }
+    }
+    return array;
+}
 }
