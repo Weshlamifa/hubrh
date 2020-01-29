@@ -75,11 +75,29 @@ export class CollaborateursComponent {
     console.log(this.res);
   }
 
-  lexicographicalSorting() {
+  lexicographicalSortingName() {
     this.bubbleSortName();
+    if (this.data !== '') {
+        this.change();
+      }
   }
-  antiLexicographicalSorting() {
+  antiLexicographicalSortingName() {
     this.bubbleAntiSortName();
+    if (this.data !== '') {
+        this.change();
+      }
+  }
+  lexicographicalSortingFirstName() {
+    this.bubbleSortName();
+    if (this.data !== '') {
+        this.change();
+      }
+  }
+  antiLexicographicalSortingFirstName() {
+    this.bubbleAntiSortName();
+    if (this.data !== '') {
+        this.change();
+      }
   }
 
   bubbleSortName() {
