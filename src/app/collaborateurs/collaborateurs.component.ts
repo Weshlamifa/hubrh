@@ -10,40 +10,34 @@ import { FullTextSearchService } from '../services/full-text-search.service'
 
 @Injectable()
 export class CollaborateursComponent {
-  //barre de recherche
-  data = '';
-  // resultat de la requete
-  res: any[];
-  typeSorted:boolean =false;
-  typeSortedFN: boolean = false;
+  data = ''; //texte barre de recherche
+  res: any[]; // resultat de la requete barre de recherche
+
+  typeSorted:boolean =false; // retourne vrai les noms sont triés par ordre lexicographique
+  typeSortedFN: boolean = false; // retourne vrai les prénoms sont triés par ordre lexicographique
   editField: string;
-    personList: Array<any> = [
-      { id: 1, name: 'LORET', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
-      { id: 2, name: 'QUESTEL', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
-      { id: 3, name: 'radeau', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false },
-      { id: 4, name: 'baetau', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
-      { id: 5, name: 'melio', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
-      { id: 6, name: 'scroll', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false  },
-      { id: 7, name: 'ami', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
-      { id: 8, name: 'beti', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
-      { id: 9, name: 'sami', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false },
-      { id: 10, name: '1', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
-      { id: 11, name: '2', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
-      { id: 12, name: '3', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false },
-      { id: 13, name: '7', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
-      { id: 20, name: '5', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
-      { id: 15, name: '8', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false }
-    ];
+  
+  personList: Array<any> = [ // données de test à afficher dans le tableau des collaborateurs
+    { id: 1, name: 'LORET', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
+    { id: 2, name: 'QUESTEL', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
+    { id: 3, name: 'radeau', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false },
+    { id: 4, name: 'baetau', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
+    { id: 5, name: 'melio', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
+    { id: 6, name: 'scroll', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false  },
+    { id: 7, name: 'ami', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
+    { id: 8, name: 'beti', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
+    { id: 9, name: 'sami', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false },
+    { id: 10, name: '1', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
+    { id: 11, name: '2', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
+    { id: 12, name: '3', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false },
+    { id: 13, name: '7', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
+    { id: 20, name: '5', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
+    { id: 15, name: '8', firstname: 'Prenom', email: 'prenom.melo@bidule.fr', isDelete: false }
+  ];
 
-    constructor(private fullTextSearchService: FullTextSearchService) {}
+    constructor(private fullTextSearchService: FullTextSearchService) {} // injection du service FullTextSearchService utilisé pour la barre de recherche
 
-
-    updateList(id: number, property: string, event: any) {
-      const editField = event.target.textContent;
-      this.personList[id][property] = editField;
-    }
-
-    remove(id: any) {
+    remove(id: any) { // le collaborateur remove passe en rouge, puis actualisation de l'affichage
       var i = 0;
       for (let person of this.personList) {
         if ( person.id === id ) {
@@ -59,6 +53,12 @@ export class CollaborateursComponent {
       console.log(id);
     }
 
+    updateList(id: number, property: string, event: any) {
+      const editField = event.target.textContent;
+      this.personList[id][property] = editField;
+    }
+
+    // ajoute un collaborateur dans la liste personList
     add(name: string, firstname:string, email:string, date:string, prestataire:boolean, role:string, statut:string, linkcv: string, comments:string) {
         const person = {id:this.personList.length+1, name:name, firstname:firstname, email:email, date:date, prestataire:prestataire, role:role, statut:statut, linkcv:linkcv, comments:comments};
         this.personList.push(person);
@@ -69,13 +69,12 @@ export class CollaborateursComponent {
       this.editField = event.target.textContent;
     }
 
+    // Actualise l'affichage du tableau des "res" qui contient le résultat d'un recherche
     change() {
-    // requete http sur la bdd
-    console.log(this.data);
-    this.res = this.fullTextSearchService.transform(this.data, this.personList);
-    console.log(this.res);
-  }
+      this.res = this.fullTextSearchService.transform(this.data, this.personList);
+    }
 
+  // tri de la colonne name par ordre lexicographique
   lexicographicalSortingName() {
     this.bubbleSortName();
     if (this.data !== '') {
@@ -83,6 +82,7 @@ export class CollaborateursComponent {
       }
       this.typeSorted = true;
   }
+  // tri de la colonne name par ordre antilexicographique
   antiLexicographicalSortingName() {
     this.bubbleAntiSortName();
     if (this.data !== '') {
@@ -90,6 +90,8 @@ export class CollaborateursComponent {
       }
       this.typeSorted = false;
   }
+
+  // tri de la colonne firstname par ordre lexicographique
   lexicographicalSortingFirstName() {
     this.bubbleSortFirstName();
     if (this.data !== '') {
@@ -97,6 +99,7 @@ export class CollaborateursComponent {
       }
       this.typeSortedFN = true;
   }
+  // tri de la colonne firstname par ordre antilexicographique
   antiLexicographicalSortingFirstName() {
     this.bubbleAntiSortFirstName();
     if (this.data !== '') {
@@ -105,8 +108,8 @@ export class CollaborateursComponent {
       this.typeSortedFN = false;
   }
 
+  // tri bubble sort du "name" par ordre lexicographique
   bubbleSortName() {
-
     for(let i = 0; i < this.personList.length; i++) {
         for(let j = 0; j < this.personList.length - 1; j++) {
 
@@ -120,8 +123,8 @@ export class CollaborateursComponent {
     return this.personList;
   }
 
+  // tri bubble sort du "firstname" par ordre lexicographique
   bubbleSortFirstName() {
-
     for(let i = 0; i < this.personList.length; i++) {
         for(let j = 0; j < this.personList.length - 1; j++) {
 
@@ -135,8 +138,8 @@ export class CollaborateursComponent {
     return this.personList;
   }
 
+  // tri bubble sort du "name" par ordre antilexicographique
   bubbleAntiSortName() {
-
     for(let i = 0; i < this.personList.length; i++) {
         for(let j = 0; j < this.personList.length - 1; j++) {
 
@@ -150,8 +153,8 @@ export class CollaborateursComponent {
     return this.personList;
   }
 
+  // tri bubble sort du "firstname" par ordre antilexicographique
   bubbleAntiSortFirstName() {
-
     for(let i = 0; i < this.personList.length; i++) {
         for(let j = 0; j < this.personList.length - 1; j++) {
 
