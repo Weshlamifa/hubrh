@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-body">
     <div id="table" class="table-editable">
+      <h2>Liste des collaborateurs</h2>
       <span class="test">
         <app-modal-add-collaborateur></app-modal-add-collaborateur>
       </span>
@@ -13,7 +14,7 @@
             <th class="text-center">Nom &nbsp;&nbsp;  <i *ngIf="typeSorted===false" (click)="lexicographicalSortingName()" class="fas fa-arrow-down"></i> <i *ngIf="typeSorted===true" (click)="antiLexicographicalSortingName()" class="fas fa-arrow-up"></i></th>
             <th class="text-center">Prenom &nbsp;&nbsp;<i *ngIf="typeSortedFN===false" (click)="lexicographicalSortingFirstName()" class="fas fa-arrow-down"></i> <i *ngIf="typeSortedFN===true" (click)="antiLexicographicalSortingFirstName()" class="fas fa-arrow-up"></i></th>
             <th class="text-center">Adresse mail</th>
-            <th class="text-center">Actions</th>
+            <th class="text-center action">Actions</th>
           </tr>
           <ng-container *ngIf="data === ''">
             <tr  *ngFor="let person of personList; let id = index">

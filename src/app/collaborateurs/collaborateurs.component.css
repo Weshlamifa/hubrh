@@ -11,3 +11,7 @@
 .isDelete {
 	color: rgb(225,24,50);
 }
+
+.action {
+	width: 300px;
+}
