@@ -20,43 +20,38 @@
           <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalName">
           <label for="form34">Nom</label>
           <mdb-error
-            *ngIf="contactFormModalName.invalid && (contactFormModalName.dirty || contactFormModalName.touched)">Input
-            invalid
+            *ngIf="contactFormModalName.invalid && (contactFormModalName.dirty || contactFormModalName.touched)">Champ obligatoire
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalName.valid && (contactFormModalName.dirty || contactFormModalName.touched)">Input
-            valid
+            *ngIf="contactFormModalName.valid && (contactFormModalName.dirty || contactFormModalName.touched)">Champ correct
           </mdb-success>
         </div>
         </div>
         <div class="two">
         <div class="md-form mb-5">
           <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalFirstName">
+          <input type="text" id="form35" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalFirstName">
           <label for="form34">Prenom</label>
           <mdb-error
-            *ngIf="contactFormModalFirstName.invalid && (contactFormModalFirstName.dirty || contactFormModalFirstName.touched)">Input
-            invalid
+            *ngIf="contactFormModalFirstName.invalid && (contactFormModalFirstName.dirty || contactFormModalFirstName.touched)">Champ obligatoire
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalFirstName.valid && (contactFormModalName.dirty || contactFormModalFirstName.touched)">Input
-            valid
+            *ngIf="contactFormModalFirstName.valid && (contactFormModalName.dirty || contactFormModalFirstName.touched)">Champ correct
           </mdb-success>
         </div>
         </div>
         <div class="three">
         <div class="md-form mb-5">
           <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-          <input type="email" id="form34" class="form-control" mdbInput mdbValidate
+          <input type="email" id="form31" class="form-control" mdbInput mdbValidate
                  [formControl]="contactFormModalEmail">
           <label for="form34">Adresse mail</label>
           <mdb-error
             *ngIf="contactFormModalEmail.invalid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">
-            Input invalid
+            Adresse mail non valide
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalEmail.valid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">Input
-            valid
+            *ngIf="contactFormModalEmail.valid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)">Adresse mail valide
           </mdb-success>
         </div>
         </div>
@@ -68,91 +63,80 @@
           <input type="checkbox" style="margin-top: 15px" id="form34"  mdbInput mdbValidate [formControl]="contactFormModalPrestataire">
           <label for="form34" style="margin-top: 20px">Prestataire</label>
           <mdb-error
-            *ngIf="contactFormModalPrestataire.invalid && (contactFormModalPrestataire.dirty || contactFormModalPrestataire.touched)">Input
-            invalid
+            *ngIf="contactFormModalPrestataire.invalid && (contactFormModalPrestataire.dirty || contactFormModalPrestataire.touched)">
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalPrestataire.valid && (contactFormModalPrestataire.dirty || contactFormModalPrestataire.touched)">Input
-            valid
+            *ngIf="contactFormModalPrestataire.valid && (contactFormModalPrestataire.dirty || contactFormModalPrestataire.touched)">
+            
           </mdb-success>
         </div>
         </div>
         <div class="five">
         <div class="md-form mb-5">
           <mdb-icon fas icon="calendar" class="prefix grey-text"></mdb-icon>
-          <input type="date" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalDate">
+          <input type="date" id="form32" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalDate">
           <label for="form34">Date d'entree</label>
           <mdb-error
-            *ngIf="contactFormModalDate.invalid && (contactFormModalDate.dirty || contactFormModalDate.touched)">Input
-            invalid
+            *ngIf="contactFormModalDate.invalid && (contactFormModalDate.dirty || contactFormModalDate.touched)">Date obligatoire
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalDate.valid && (contactFormModalDate.dirty || contactFormModalDate.touched)">Input
-            valid
+            *ngIf="contactFormModalDate.valid && (contactFormModalDate.dirty || contactFormModalDate.touched)">Date valide
           </mdb-success>
         </div>
         </div>
         <div class="six">
         <div class="md-form mb-5">
           <mdb-icon fas  class="prefix grey-text"></mdb-icon>
-          <select id="form34" class="form-control" mdbInput mdbValidate
+          <select id="form39" class="form-control" mdbInput mdbValidate
                  [formControl]="contactFormModalRole"><option value="Stagiaire">Stagiaire</option> <option value="Developpeur">Developpeur</option> <option value="Apprenti">Apprenti</option></select>
                  
           <label for="form34">Role</label>
           <mdb-error
-            *ngIf="contactFormModalRole.invalid && (contactFormModalRole.dirty || contactFormModalRole.touched)">
-            Input invalid
+            *ngIf="contactFormModalRole.invalid && (contactFormModalRole.dirty || contactFormModalRole.touched)">Role obligatoire
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalRole.valid && (contactFormModalRole.dirty || contactFormModalRole.touched)">Input
-            valid
+            *ngIf="contactFormModalRole.valid && (contactFormModalRole.dirty || contactFormModalRole.touched)">Role valide
           </mdb-success>
         </div>
         </div>
         <div class="seven">
         <div class="md-form mb-5">
           <mdb-icon fas  class="prefix grey-text"></mdb-icon>
-          <select id="form34" class="form-control" mdbInput mdbValidate
+          <select id="form38" class="form-control" mdbInput mdbValidate
                  [formControl]="contactFormModalStatut"><option value="En fonction">En fonction</option> <option value="Desactive">Desactive</option></select>
                  
           <label for="form34">Statut</label>
           <mdb-error
-            *ngIf="contactFormModalStatut.invalid && (contactFormModalStatut.dirty || contactFormModalStatut.touched)">
-            Input invalid
+            *ngIf="contactFormModalStatut.invalid && (contactFormModalStatut.dirty || contactFormModalStatut.touched)">Statut obligatoire
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalStatut.valid && (contactFormModalStatut.dirty || contactFormModalStatut.touched)">Input
-            valid
+            *ngIf="contactFormModalStatut.valid && (contactFormModalStatut.dirty || contactFormModalStatut.touched)">Statut valide
           </mdb-success>
         </div>
         </div>
         <div class="eight">
         <div class="md-form mb-5">
           <mdb-icon fas icon="file" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalLinkCV">
+          <input type="text" id="form37" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalLinkCV">
           <label for="form34">Lien CV</label>
           <mdb-error
-            *ngIf="contactFormModalLinkCV.invalid && (contactFormModalLinkCV.dirty || contactFormModalLinkCV.touched)">Input
-            invalid
+            *ngIf="contactFormModalLinkCV.invalid && (contactFormModalLinkCV.dirty || contactFormModalLinkCV.touched)">
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalLinkCV.valid && (contactFormModalLinkCV.dirty || contactFormModalLinkCV.touched)">Input
-            valid
+            *ngIf="contactFormModalLinkCV.valid && (contactFormModalLinkCV.dirty || contactFormModalLinkCV.touched)">
           </mdb-success>
         </div>
         </div>
         <div class="nine">
         <div class="md-form mb-5">
           <mdb-icon fas icon="camera" class="prefix grey-text"></mdb-icon>
-          <input type="file" id="form34" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalPhoto">
+          <input type="file" id="form36" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalPhoto">
           <label for="form34"></label>
           <mdb-error
-            *ngIf="contactFormModalPhoto.invalid && (contactFormModalPhoto.dirty || contactFormModalPhoto.touched)">Input
-            invalid
+            *ngIf="contactFormModalPhoto.invalid && (contactFormModalPhoto.dirty || contactFormModalPhoto.touched)">
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalPhoto.valid && (contactFormModalPhoto.dirty || contactFormModalPhoto.touched)">Input
-            valid
+            *ngIf="contactFormModalPhoto.valid && (contactFormModalPhoto.dirty || contactFormModalPhoto.touched)">
           </mdb-success>
         </div>
         </div>
@@ -162,12 +146,10 @@
           <input type="text" id="form56" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalComments">
           <label for="form34">Commentaires</label>
           <mdb-error
-            *ngIf="contactFormModalComments.invalid && (contactFormModalComments.dirty || contactFormModalComments.touched)">Input
-            invalid
+            *ngIf="contactFormModalComments.invalid && (contactFormModalComments.dirty || contactFormModalComments.touched)">
           </mdb-error>
           <mdb-success
-            *ngIf="contactFormModalComments.valid && (contactFormModalComments.dirty || contactFormModalComments.touched)">Input
-            valid
+            *ngIf="contactFormModalComments.valid && (contactFormModalComments.dirty || contactFormModalComments.touched)">
           </mdb-success>
         </div>
         </div>
