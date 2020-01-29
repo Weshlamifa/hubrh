@@ -14,6 +14,7 @@ import { ModalAddCollaborateurComponent } from './modal-add-collaborateur/modal-
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FullTextSearchService } from './services/full-text-search.service';
+import {MatCardModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: 'collaborateurs', component: CollaborateursComponent},
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    MatCardModule,
     BrowserAnimationsModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),

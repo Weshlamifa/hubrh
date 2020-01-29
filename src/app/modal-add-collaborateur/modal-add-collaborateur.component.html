@@ -174,14 +174,18 @@
       </div>
       <div class="eleven">
       <div class="modal-footer d-flex justify-content-center">
-        
+        <button  mdbBtn color="red" class="waves-light" mdbWavesEffect (click)="onClose(); frame.hide()"><i class="fas fa-times-circle"></i>&nbsp;   Annuler
+          
+        </button>
         <button [ngClass]="{disabled : !(contactFormModalEmail.valid && (contactFormModalEmail.dirty || contactFormModalEmail.touched)) 
           || !(contactFormModalFirstName.valid && (contactFormModalName.dirty || contactFormModalFirstName.touched)) 
           || !(contactFormModalName.valid && (contactFormModalName.dirty || contactFormModalName.touched))
           || !(contactFormModalDate.valid && (contactFormModalDate.dirty || contactFormModalDate.touched))
-          || !(contactFormModalRole.valid && (contactFormModalRole.dirty || contactFormModalRole.touched))}" mdbBtn color="black" class="waves-light" mdbWavesEffect (click)="onSubmit(); frame.hide()"><i class="fas fa-plus"></i>&nbsp;   Ajouter
+          || !(contactFormModalRole.valid && (contactFormModalRole.dirty || contactFormModalRole.touched))
+          || !(contactFormModalStatut.valid && (contactFormModalStatut.dirty || contactFormModalStatut.touched))}" mdbBtn color="green" class="waves-light" mdbWavesEffect (click)="onSubmit(); frame.hide()"><i class="fas fa-plus"></i>&nbsp;   Ajouter
           
         </button>
+        
       </div>
       </div>
     </div>
