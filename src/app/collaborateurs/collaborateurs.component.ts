@@ -14,7 +14,8 @@ export class CollaborateursComponent {
   data = '';
   // resultat de la requete
   res: any[];
-
+  typeSorted:boolean =false;
+  typeSortedFN: boolean = false;
   editField: string;
     personList: Array<any> = [
       { id: 1, name: 'LORET', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
@@ -80,24 +81,28 @@ export class CollaborateursComponent {
     if (this.data !== '') {
         this.change();
       }
+      this.typeSorted = true;
   }
   antiLexicographicalSortingName() {
     this.bubbleAntiSortName();
     if (this.data !== '') {
         this.change();
       }
+      this.typeSorted = false;
   }
   lexicographicalSortingFirstName() {
-    this.bubbleSortName();
+    this.bubbleSortFirstName();
     if (this.data !== '') {
         this.change();
       }
+      this.typeSortedFN = true;
   }
   antiLexicographicalSortingFirstName() {
-    this.bubbleAntiSortName();
+    this.bubbleAntiSortFirstName();
     if (this.data !== '') {
         this.change();
       }
+      this.typeSortedFN = false;
   }
 
   bubbleSortName() {
@@ -120,7 +125,7 @@ export class CollaborateursComponent {
     for(let i = 0; i < this.personList.length; i++) {
         for(let j = 0; j < this.personList.length - 1; j++) {
 
-            if(this.personList[j].name.toUpperCase() > this.personList[j + 1].name.toUpperCase()) {
+            if(this.personList[j].firstname.toUpperCase() > this.personList[j + 1].firstname.toUpperCase()) {
                 let swap = this.personList[j];
                 this.personList[j] = this.personList[j + 1];
                 this.personList[j + 1] = swap;
@@ -150,7 +155,7 @@ export class CollaborateursComponent {
     for(let i = 0; i < this.personList.length; i++) {
         for(let j = 0; j < this.personList.length - 1; j++) {
 
-            if(this.personList[j].name.toUpperCase() < this.personList[j + 1].name.toUpperCase()) {
+            if(this.personList[j].firstname.toUpperCase() < this.personList[j + 1].firstname.toUpperCase()) {
                 let swap = this.personList[j];
                 this.personList[j] = this.personList[j + 1];
                 this.personList[j + 1] = swap;
