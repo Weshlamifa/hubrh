@@ -18,13 +18,19 @@
           <ng-container *ngIf="data === ''">
             <tr  *ngFor="let person of personList; let id = index">
               <td>
-                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
+                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">
+                  <p [ngClass]="{ 'isDelete': person.isDelete === true }" >{{person.name}}</p>
+                </span>
               </td>
               <td>
-                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">{{person.firstname}}</span>
+                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">
+                  <p [ngClass]="{ 'isDelete': person.isDelete === true }" >{{person.firstname}}</p>
+                </span>
               </td>
               <td>
-                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">{{person.email}}</span>
+                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">
+                  <p [ngClass]="{ 'isDelete': person.isDelete === true }" >{{person.email}}</p>
+                </span>
               </td>  
               <td>
                 <span class="table-remove">
@@ -33,7 +39,7 @@
                   </button>
                   <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
                     <i class="fas fa-search"></i>                </button>
-                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(person.id)">
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(person.id)" *ngIf="person.isDelete === false" >
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </span>
@@ -44,13 +50,19 @@
           <ng-container *ngIf="data !== ''">
             <tr  *ngFor="let person of res; let id = index">
               <td>
-                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">{{person.name}}</span>
+                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">
+                  <p [ngClass]="{ 'isDelete': person.isDelete === true }" >{{person.name}}</p>
+                </span>
               </td>
               <td>
-                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">{{person.firstname}}</span>
+                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">
+                  <p [ngClass]="{ 'isDelete': person.isDelete === true }" >{{person.firstname}}</p>
+                </span>
               </td>
               <td>
-                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">{{person.email}}</span>
+                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">
+                  <p [ngClass]="{ 'isDelete': person.isDelete === true }" >{{person.email}}</p>
+                </span>
               </td>  
               <td>
                 <span class="table-remove">

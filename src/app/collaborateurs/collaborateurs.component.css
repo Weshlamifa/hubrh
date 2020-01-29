@@ -7,3 +7,7 @@
 	height: 600px;
 	overflow: auto;
 }
+
+.isDelete {
+	color: rgb(225,24,50);
+}
