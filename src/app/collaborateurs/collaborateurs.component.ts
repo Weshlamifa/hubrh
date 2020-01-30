@@ -16,6 +16,7 @@ export class CollaborateursComponent {
   typeSorted:boolean =false; // retourne vrai les noms sont triés par ordre lexicographique
   typeSortedFN: boolean = false; // retourne vrai les prénoms sont triés par ordre lexicographique
   
+  editField: string;
   personList: Array<any> = [ // données de test à afficher dans le tableau des collaborateurs
     { id: 1, name: 'LORET', firstname: 'Alexis', email: 'alexis.loret@bidule.fr', isDelete: false },
     { id: 2, name: 'QUESTEL', firstname: 'Louis', email: 'louis.questel@bidule.fr', isDelete: false },
@@ -50,6 +51,10 @@ export class CollaborateursComponent {
         this.change();
       }
       console.log(id);
+    }
+
+    changeValue(id: number, property: string, event: any) {
+      this.editField = event.target.textContent;
     }
 
     updateList(id: number, property: string, event: any) {
