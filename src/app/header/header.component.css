@@ -4,7 +4,8 @@ ul {
     padding: 0;
     overflow: hidden;
     border: 1px solid #e7e7e7;
-	background-color: #f3f3f3;
+    background-color: #f3f3f3;
+    font-family: 'Poppins Regular';
 }
 
 li {
@@ -35,4 +36,11 @@ li a.active {
 img {
 	align-content: center;
 	margin-top: 9%
+}
+
+@font-face {
+font-family: 'Poppins Regular';
+font-style: normal;
+font-weight: normal;
+src: local('Poppins Regular'), url('src/assets/poppins-cufonfonts-webfont/Poppins-Regular.woff') format('woff');
 }

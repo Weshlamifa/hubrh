@@ -1,6 +1,7 @@
 .data-table {
 	width: 80%;
 	margin: 20px auto;
+	font-family: Poppins;
 }
 
 .tab-container {
@@ -11,7 +12,17 @@
 .isDelete {
 	color: rgb(225,24,50);
 }
-
 .action {
 	width: 300px;
+}
+
+.card {
+	font-family: 'Poppins Regular';
+}
+
+@font-face {
+font-family: 'Poppins Regular';
+font-style: normal;
+font-weight: normal;
+src: local('Poppins Regular'), url('src/assets/poppins-cufonfonts-webfont/Poppins-Regular.woff') format('woff');
 }
