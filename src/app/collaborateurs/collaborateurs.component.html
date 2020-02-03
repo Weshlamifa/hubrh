@@ -2,11 +2,11 @@
   <div class="card-body">
     <div id="table" class="table-editable">
       <h2>Liste des collaborateurs</h2>
-      <span class="test">
-        <app-modal-add-collaborateur></app-modal-add-collaborateur>
-      </span>
       <div class="search">
         <input [(ngModel)]="data" (ngModelChange)="change()" type="text" class="searchTerm" placeholder="recherche">
+        <div class="add-button">
+          <app-modal-add-collaborateur></app-modal-add-collaborateur>
+        </div>
       </div>
       <div class="tab-container">
         <table class="table table-bordered table-responsive-md table-striped text-center">

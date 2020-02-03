@@ -3,21 +3,37 @@
   position: relative;
   display: flex;
   margin-left: 1%;
-  padding-bottom: 0.5%;
+  margin-bottom: 1%;
 }
 
 .searchTerm {
   width: 55%;
   border: 3px solid grey;
-  padding: 5px;
-  height: 40px;
   border-radius: 7px 7px 7px 7px;
-  outline: none;
   color: grey;
   padding-left:20px;
+  margin-top:7px;
+  margin-bottom:7px;
 }
 
 .searchTerm:focus{
   color: black;
   padding-left:20px;
+}
+
+.add-button {
+  position : relative;
+  float: right;
+  padding-left: 28.2%;
+}
+
+.styles_black-row__SB_cs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    height: 50px;
+    padding: 0 10px;
 }
