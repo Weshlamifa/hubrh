@@ -15,7 +15,8 @@ import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FullTextSearchService } from './services/full-text-search.service';
 import {MatCardModule} from '@angular/material';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './services/api.service';
 const appRoutes: Routes = [
   { path: 'collaborateurs', component: CollaborateursComponent},
 ];
@@ -48,9 +49,11 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
+    HttpClientModule,
     ReactiveFormsModule
     ],
-  providers: [ MatPaginator, FullTextSearchService ],
+  providers: [ MatPaginator, FullTextSearchService, ApiService
+   ],
   bootstrap: [AppComponent],
 
   entryComponents: [ModalAddCollaborateurComponent]
