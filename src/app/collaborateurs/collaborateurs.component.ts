@@ -35,7 +35,7 @@ export class CollaborateursComponent {
     for (let person of this.personList) {
       if (person.id === id) {
         //this.personList.splice(i,1);
-        person.isDelete = true;
+        person.deleted = true;
         break;
       }
       i++;

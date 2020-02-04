@@ -68,12 +68,12 @@
               </td>  
               <td>
                 <span class="table-remove">
-                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
+                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0" >
                     <i class="fas fa-pen"></i>
                   </button>
-                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" >
+                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0" >
                     <i class="fas fa-search"></i>                </button>
-                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(person.id)">
+                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0" (click)="remove(person.id)" *ngIf="person.deleted === false" >
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </span>
