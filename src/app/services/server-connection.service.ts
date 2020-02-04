@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ApiService {
- API_KEY = 'JE_NE_SAIS_PAS_QUOI_MAITRE_ICI';
+@Injectable({providedIn: 'root'})
+
+export class ServerConnectionService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getNews() {
-    return this.httpClient.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}`);
+  getAll(): Observable<any> {
+    return this.httpClient.get('http://localhost:8080/collaborateurs');
   }
-
 }

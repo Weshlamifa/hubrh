@@ -17,6 +17,8 @@ import { FullTextSearchService } from './services/full-text-search.service';
 import {MatCardModule} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
+import { ServerConnectionService } from './services/server-connection.service';
+
 const appRoutes: Routes = [
   { path: 'collaborateurs', component: CollaborateursComponent},
 ];
@@ -52,7 +54,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule
     ],
-  providers: [ MatPaginator, FullTextSearchService, ApiService
+  providers: [ MatPaginator, FullTextSearchService, ApiService, ServerConnectionService
    ],
   bootstrap: [AppComponent],
 
