@@ -87,14 +87,15 @@
         <div class="six">
         <div class="md-form mb-5">
           <mdb-icon fas  class="prefix grey-text"></mdb-icon>
+          <label for="form39" style="margin-bottom: 50%">Role</label>
           <select id="form39" class="form-control" mdbInput mdbValidate
                  [formControl]="contactFormModalRole"><option value="Stagiaire">Stagiaire</option> <option value="Developpeur">Developpeur</option> <option value="Apprenti">Apprenti</option></select>
                  
-          <label for="form34">Role</label>
-          <mdb-error
+          
+          <mdb-error style="margin-top: 2%"
             *ngIf="contactFormModalRole.invalid && (contactFormModalRole.dirty || contactFormModalRole.touched)">Role obligatoire
           </mdb-error>
-          <mdb-success
+          <mdb-success style="margin-top: 2%"
             *ngIf="contactFormModalRole.valid && (contactFormModalRole.dirty || contactFormModalRole.touched)">Role valide
           </mdb-success>
         </div>
@@ -106,10 +107,10 @@
                  [formControl]="contactFormModalStatut"><option value="En fonction">En fonction</option> <option value="Desactive">Desactive</option></select>
                  
           <label for="form34">Statut</label>
-          <mdb-error
+          <mdb-error style="margin-top: 2%"
             *ngIf="contactFormModalStatut.invalid && (contactFormModalStatut.dirty || contactFormModalStatut.touched)">Statut obligatoire
           </mdb-error>
-          <mdb-success
+          <mdb-success style="margin-top: 2%"
             *ngIf="contactFormModalStatut.valid && (contactFormModalStatut.dirty || contactFormModalStatut.touched)">Statut valide
           </mdb-success>
         </div>
