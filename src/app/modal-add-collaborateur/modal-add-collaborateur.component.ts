@@ -52,6 +52,19 @@ export class ModalAddCollaborateurComponent implements OnInit {
       const photo = this.contactFormModalPhoto.value;
       const comments = this.contactFormModalComments.value;
       this.collaborateurs.add(name, firstname, email, date ,this.prestataire, role, statut, linkcv, comments);
+      if(!this.collaborateurs.typeSorted && this.collaborateurs.typeSortedFN) {
+        this.collaborateurs.lexicographicalSortingFirstName();
+      }
+      else if(this.collaborateurs.typeSorted && !this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
+         this.collaborateurs.lexicographicalSortingName();
+      } // c'est bon
+      else if(!this.collaborateurs.typeSorted && this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
+         this.collaborateurs.lexicographicalSortingName();
+      }
+      else if(!this.collaborateurs.typeSorted && !this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
+        this.collaborateurs.antiLexicographicalSortingName();
+      }
+      else if(!this.collaborateurs.typeSorted  && !this.collaborateurs.typeSortedFN && this.collaborateurs.notSortedYet) {}
       this.validatingForm.reset();   
   }
 

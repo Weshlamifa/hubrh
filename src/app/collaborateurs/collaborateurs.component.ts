@@ -13,8 +13,9 @@ export class CollaborateursComponent {
   data = ''; //texte barre de recherche
   res: any[]; // resultat de la requete barre de recherche
 
-  typeSorted:boolean =false; // retourne vrai les noms sont triés par ordre lexicographique
-  typeSortedFN: boolean = false; // retourne vrai les prénoms sont triés par ordre lexicographique
+  typeSorted:boolean =null; // retourne vrai les noms sont triés par ordre lexicographique
+  typeSortedFN: boolean = null; // retourne vrai les prénoms sont triés par ordre lexicographique
+  notSortedYet: boolean = true;
   
   editField: string;
   personList: Array<any> = [ // données de test à afficher dans le tableau des collaborateurs
@@ -81,6 +82,11 @@ export class CollaborateursComponent {
         this.change();
       }
       this.typeSorted = true;
+      this.typeSortedFN = false;
+      this.notSortedYet = false;
+      console.log("typeSorted : "+this.typeSorted);
+      console.log("typeSortedFN : "+this.typeSortedFN);
+      console.log("notSortedYet : "+this.notSortedYet);
   }
   // tri de la colonne name par ordre antilexicographique
   antiLexicographicalSortingName() {
@@ -89,6 +95,11 @@ export class CollaborateursComponent {
         this.change();
       }
       this.typeSorted = false;
+      this.typeSortedFN = false;
+      this.notSortedYet = false;
+      console.log("typeSorted : "+this.typeSorted);
+      console.log("typeSortedFN : "+this.typeSortedFN);
+      console.log("notSortedYet : "+this.notSortedYet);
   }
 
   // tri de la colonne firstname par ordre lexicographique
@@ -98,6 +109,11 @@ export class CollaborateursComponent {
         this.change();
       }
       this.typeSortedFN = true;
+      this.typeSorted = false;
+      this.notSortedYet = false;
+      console.log("typeSorted : "+this.typeSorted);
+      console.log("typeSortedFN : "+this.typeSortedFN);
+      console.log("notSortedYet : "+this.notSortedYet);
   }
   // tri de la colonne firstname par ordre antilexicographique
   antiLexicographicalSortingFirstName() {
@@ -106,6 +122,11 @@ export class CollaborateursComponent {
         this.change();
       }
       this.typeSortedFN = false;
+      this.typeSorted = false;
+      this.notSortedYet = false;
+      console.log("typeSorted : "+this.typeSorted);
+      console.log("typeSortedFN : "+this.typeSortedFN);
+      console.log("notSortedYet : "+this.notSortedYet);
   }
 
   // tri bubble sort du "name" par ordre lexicographique
