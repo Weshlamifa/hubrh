@@ -54,10 +54,6 @@
     "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
     "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
     "node_modules/animate.css/animate.css",
-    "node_modules/@material/list/mdc-list.scss",
-    "node_modules/@material/menu-surface/mdc-menu-surface.scss",
-    "node_modules/@material/menu/mdc-menu.scss",
-    "node_modules/@material/select/mdc-select",
               "src/styles.css"
             ],
             "scripts": [ "node_modules/chart.js/dist/Chart.js",
