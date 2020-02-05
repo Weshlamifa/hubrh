@@ -6,7 +6,7 @@
 }
 
 #modal-title {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 #modal-footer {
@@ -26,45 +26,48 @@
 }
 
 .one {
-
+font-size: 14px;
   height: 8vh;
-  width: 30vh;
+  width: 30vh; 
   float: left;
 }
 
 .two {
-    
+    font-size: 14px;
     height: 8vh;
      width: 30vh;
      align-self: right;
      float: right;
 }
 .three {
-    
+    font-size: 14px;
     height: 8vh;
     width: 30vh;
     float: left;
 
 }
 .four {
+    font-size: 14px;
     height: 8vh;
     width: 20vh;
-    float: right;
-    margin-right: 10%;
+    float: right; 
 }
 .five {
+    font-size: 14px;
     height: 8vh;
     width: 60vh;
     float: left;
 }
 
 .six {
+    font-size: 14px;
     height: 8vh;
     width: 30vh;
   float: left;
 }
 
 .seven {
+    font-size: 14px;
     height: 8vh;
      width: 30vh;
      align-self: right;
@@ -72,28 +75,29 @@
 }
 
 .eight {
-
+font-size: 14px;
      height: 8vh;
      width: 50vh;
      float: left;
 }
 .nine {
-    
+    font-size: 14px;
      height: 8vh;
      width: 40vh;
      float: left;
 }
 
 .ten {
-    
-    height: 16vh;
+    font-size: 14px;
+    height: 14vh;
      width: 40vh;
      float: left;
 }
 
 .eleven {
-    height: 8vh;
-     width: 50vh;
-     margin-left: 7vh;
+    font-size: calc(14-100vh)px;
+    height: 10vh;
+     width: 55vh;
+     margin-left: 5vh;
      float: left;
 }
