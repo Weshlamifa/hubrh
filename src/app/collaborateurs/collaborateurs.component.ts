@@ -3,15 +3,16 @@ import { Component, Injectable } from '@angular/core';
 import { FullTextSearchService } from '../services/full-text-search.service'
 import { ServerConnectionService } from '../services/server-connection.service'; // conenction http avec le serveur
 
-
 @Component({
   selector: 'app-collaborateurs',
   templateUrl: './collaborateurs.component.html',
-  styleUrls: ['./collaborateurs.component.css', './navigationbar.component.css']
+  styleUrls: ['./collaborateurs.component.css', './navigationbar.component.css', './switch.css' ]
 })
 
 @Injectable()
 export class CollaborateursComponent {
+
+
   data = ''; //texte barre de recherche
   res: any[]; // resultat de la requete barre de recherche
   showDeleted: boolean;

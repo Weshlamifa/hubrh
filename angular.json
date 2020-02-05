@@ -54,6 +54,7 @@
     "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
     "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
     "node_modules/animate.css/animate.css",
+    "node_modules/@material/switch/mdc-switch.scss",
               "src/styles.css"
             ],
             "scripts": [ "node_modules/chart.js/dist/Chart.js",

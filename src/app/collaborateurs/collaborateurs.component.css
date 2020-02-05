@@ -28,4 +28,5 @@ src: local('Poppins Regular'), url('src/assets/poppins-cufonfonts-webfont/Poppin
 }
 
 .test{
+	display: contents;
 }
