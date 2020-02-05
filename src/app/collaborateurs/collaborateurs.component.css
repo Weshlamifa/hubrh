@@ -5,7 +5,7 @@
 }
 
 .tab-container {
-	height: 600px;
+	height: calc(100vh - 250px);
 	overflow: auto;
 }
 
@@ -25,4 +25,7 @@ font-family: 'Poppins Regular';
 font-style: normal;
 font-weight: normal;
 src: local('Poppins Regular'), url('src/assets/poppins-cufonfonts-webfont/Poppins-Regular.woff') format('woff');
+}
+
+.test{
 }

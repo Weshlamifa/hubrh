@@ -8,72 +8,91 @@
           <app-modal-add-collaborateur></app-modal-add-collaborateur>
         </div>
       </div>
+      <input type="checkbox" style="margin-top: 15px" id="form34" mdbInput mdbValidate (click)="changeShowDeleted()">
       <div class="tab-container">
         <table class="table table-bordered table-responsive-md table-striped text-center">
           <tr>
-            <th style="background-color: #272727; color: white;" class="text-center">Nom &nbsp;&nbsp;  <i *ngIf="typeSorted===null" (click)="lexicographicalSortingName()" class="fas fa-arrow-down"></i>  <i *ngIf="typeSorted===false" (click)="lexicographicalSortingName()" class="fas fa-arrow-down"></i> <i *ngIf="typeSorted===true" (click)="antiLexicographicalSortingName()" class="fas fa-arrow-up"></i></th>
-            <th style="background-color: #272727; color: white;" class="text-center">Prenom &nbsp;&nbsp; <i *ngIf="typeSortedFN===null" (click)="lexicographicalSortingFirstName()" class="fas fa-arrow-down"></i>  <i *ngIf="typeSortedFN===false" (click)="lexicographicalSortingFirstName()" class="fas fa-arrow-down"></i> <i *ngIf="typeSortedFN===true" (click)="antiLexicographicalSortingFirstName()" class="fas fa-arrow-up"></i></th>
+            <th style="background-color: #272727; color: white;" class="text-center">Nom &nbsp;&nbsp; <i
+                *ngIf="typeSorted===null" (click)="lexicographicalSortingName()" class="fas fa-arrow-down"></i> <i
+                *ngIf="typeSorted===false" (click)="lexicographicalSortingName()" class="fas fa-arrow-down"></i> <i
+                *ngIf="typeSorted===true" (click)="antiLexicographicalSortingName()" class="fas fa-arrow-up"></i></th>
+            <th style="background-color: #272727; color: white;" class="text-center">Prenom &nbsp;&nbsp; <i
+                *ngIf="typeSortedFN===null" (click)="lexicographicalSortingFirstName()" class="fas fa-arrow-down"></i>
+              <i *ngIf="typeSortedFN===false" (click)="lexicographicalSortingFirstName()" class="fas fa-arrow-down"></i>
+              <i *ngIf="typeSortedFN===true" (click)="antiLexicographicalSortingFirstName()"
+                class="fas fa-arrow-up"></i></th>
             <th style="background-color: #272727; color: white;" class="text-center">Adresse mail</th>
             <th style="background-color: #272727; color: white;" class="text-center action">Actions</th>
           </tr>
           <ng-container *ngIf="data === ''">
-            <tr  *ngFor="let person of personList; let id = index">
+            
+              <tr *ngFor="let person of personList; let id = index">
+                <td>
+                  <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)"
+                    contenteditable="true">
+                    <p [ngClass]="{ 'isDelete': person.deleted === true }">{{person.name}}</p>
+                  </span>
+                </td>
+                <td>
+                  <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)"
+                    (blur)="updateList(id, 'firstname', $event)">
+                    <p [ngClass]="{ 'isDelete': person.deleted === true }">{{person.firstname}}</p>
+                  </span>
+                </td>
+                <td>
+                  <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)"
+                    (blur)="updateList(id, 'email', $event)">
+                    <p [ngClass]="{ 'isDelete': person.deleted === true }">{{person.email}}</p>
+                  </span>
+                </td>
+                <td>
+                  <span class="table-remove">
+                    <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm"
+                      class="my-0">
+                      <i class="fas fa-pen"></i>
+                    </button>
+                    <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm"
+                      class="my-0">
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0"
+                      (click)="remove(person.id)" *ngIf="person.deleted === false">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </span>
+                </td>
+              </tr>
+          </ng-container>
+
+          <ng-container *ngIf="data !== ''">
+            <tr *ngFor="let person of res; let id = index">
               <td>
-                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">
-                  <p [ngClass]="{ 'isDelete': person.deleted === true }" >{{person.name}}</p>
+                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)"
+                  contenteditable="true">
+                  <p [ngClass]="{ 'isDelete': person.deleted === true }">{{person.name}}</p>
                 </span>
               </td>
               <td>
-                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">
-                  <p [ngClass]="{ 'isDelete': person.deleted === true }" >{{person.firstname}}</p>
+                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)"
+                  (blur)="updateList(id, 'firstname', $event)">
+                  <p [ngClass]="{ 'isDelete': person.deleted === true }">{{person.firstname}}</p>
                 </span>
               </td>
               <td>
-                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">
-                  <p [ngClass]="{ 'isDelete': person.deleted === true }" >{{person.email}}</p>
+                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)"
+                  (blur)="updateList(id, 'email', $event)">
+                  <p [ngClass]="{ 'isDelete': person.deleted === true }">{{person.email}}</p>
                 </span>
-              </td>  
+              </td>
               <td>
                 <span class="table-remove">
-                  <button type="button" mdbBtn style="background-color: #009ddf"  rounded="true" size="sm" class="my-0" >
+                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0">
                     <i class="fas fa-pen"></i>
                   </button>
                   <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0" (click)="remove(person.id)" *ngIf="person.deleted === false" >
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
-                </span>
-              </td>
-            </tr>
-          </ng-container>
-          
-          <ng-container *ngIf="data !== ''">
-            <tr  *ngFor="let person of res; let id = index">
-              <td>
-                <span (keyup)="changeValue(id, 'name', $event)" (blur)="updateList(id, 'name', $event)" contenteditable="true">
-                  <p [ngClass]="{ 'isDelete': person.deleted === true }" >{{person.name}}</p>
-                </span>
-              </td>
-              <td>
-                <span contenteditable="true" (keyup)="changeValue(id, 'firstname', $event)" (blur)="updateList(id, 'firstname', $event)">
-                  <p [ngClass]="{ 'isDelete': person.deleted === true }" >{{person.firstname}}</p>
-                </span>
-              </td>
-              <td>
-                <span contenteditable="true" (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)">
-                  <p [ngClass]="{ 'isDelete': person.deleted === true }" >{{person.email}}</p>
-                </span>
-              </td>  
-              <td>
-                <span class="table-remove">
-                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0" >
-                    <i class="fas fa-pen"></i>
-                  </button>
-                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0" >
-                    <i class="fas fa-search"></i>                </button>
-                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0" (click)="remove(person.id)" *ngIf="person.deleted === false" >
+                    <i class="fas fa-search"></i> </button>
+                  <button type="button" mdbBtn style="background-color: #009ddf" rounded="true" size="sm" class="my-0"
+                    (click)="remove(person.id)" *ngIf="person.deleted === false">
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </span>

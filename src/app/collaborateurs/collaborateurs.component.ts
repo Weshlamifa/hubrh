@@ -14,6 +14,7 @@ import { ServerConnectionService } from '../services/server-connection.service';
 export class CollaborateursComponent {
   data = ''; //texte barre de recherche
   res: any[]; // resultat de la requete barre de recherche
+  showDeleted: boolean;
 
   typeSorted: boolean = null; // retourne vrai les noms sont triés par ordre lexicographique
   typeSortedFN: boolean = null; // retourne vrai les prénoms sont triés par ordre lexicographique
@@ -22,12 +23,25 @@ export class CollaborateursComponent {
   editField: string;
   personList: Array<any>;
 
-  constructor(private fullTextSearchService: FullTextSearchService, private serverConnectionService: ServerConnectionService) {} // injection du service FullTextSearchService utilisé pour la barre de recherche
+  constructor(private fullTextSearchService: FullTextSearchService, private serverConnectionService: ServerConnectionService) {
+    this.showDeleted = false;
+  } // injection du service FullTextSearchService utilisé pour la barre de recherche
 
   ngOnInit() {
+    console.log(this.showDeleted);
     this.serverConnectionService.getAll().subscribe(data => {
-      console.log (this.personList = data);
+      console.log(this.personList = data);
     });
+    console.log(this.showDeleted);
+  }
+
+  changeShowDeleted() {
+    if (this.showDeleted) {
+      this.showDeleted = false;
+    }
+    else {
+      this.showDeleted = true;
+    }
   }
 
   remove(id: any) { // le collaborateur remove passe en rouge, puis actualisation de l'affichage
