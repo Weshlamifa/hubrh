@@ -2,7 +2,7 @@
         (click)="frame.show()" mdbWavesEffect>Ajouter un collaborateur
 </button>
 
-<div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+<div mdbModal style="width: 70vh; height: 90vh; margin-left: 50vh;" #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
@@ -128,6 +128,7 @@
           </mdb-success>
         </div>
         </div>
+       
         <div class="nine">
         <div class="md-form mb-5">
           <mdb-icon fas icon="camera" class="prefix grey-text"></mdb-icon>
@@ -144,7 +145,7 @@
         <div class="ten">
         <div class="md-form mb-5">
           <mdb-icon fas icon="pen" class="prefix grey-text"></mdb-icon>
-          <input type="text" id="form56" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalComments">
+          <textarea  id="form56" class="form-control" mdbInput mdbValidate [formControl]="contactFormModalComments"></textarea>
           <label for="form34">Commentaires</label>
           <mdb-error
             *ngIf="contactFormModalComments.invalid && (contactFormModalComments.dirty || contactFormModalComments.touched)">
