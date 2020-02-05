@@ -5,7 +5,7 @@
 }
 
 .tab-container {
-	height: calc(100vh - 250px);
+	height: calc(100vh - 245px);
 	overflow: auto;
 }
 
@@ -27,6 +27,6 @@ font-weight: normal;
 src: local('Poppins Regular'), url('src/assets/poppins-cufonfonts-webfont/Poppins-Regular.woff') format('woff');
 }
 
-.test{
-	display: contents;
+.rowContain {
+  display: contents;
 }
