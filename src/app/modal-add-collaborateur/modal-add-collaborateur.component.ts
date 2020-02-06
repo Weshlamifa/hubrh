@@ -68,11 +68,15 @@ export class ModalAddCollaborateurComponent implements OnInit {
       this.validatingForm.reset();   
   }
 
-  /** Quand on ferme le formulaire sans valider. Clic sur la croix ou le bouton annuler */
+  /** Quand on ferme le formulaire sans valider. Clic sur la croix ou le bouton annuler. Tous les champs
+   * sont réinitialisés. Les champs Role et Statut sont remis dans leur état d'origine avec "Veuillez sélectionner un ..."
+  */
 
   onClose() {
     this.validatingForm.reset();
-  }
+    this.contactFormModalRole.setValue('');
+    this.contactFormModalStatut.setValue('');
+    }
 
   /** Getters pour récupérer les valeurs mises dans le formulaire */
 
