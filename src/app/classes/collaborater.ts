@@ -12,10 +12,11 @@ export class Collaborator {
  leftDateOp: Date;
  fkIdStatus: number;
  deleted: boolean;
+ fkIdRole: number;
 
  constructor(id: number, name: string, firstname: string, email: string, comment: string,
   cv: string, isProvider: boolean, arrivalDateOp: Date, leftDateOp: Date, fkIdStatus: number,
-  deleted: boolean) {
+  deleted: boolean, fkIdRole: number) {
   this. id = id;
   this.name = name;
   this.firstname = firstname;
@@ -27,5 +28,6 @@ export class Collaborator {
   this.leftDateOp = leftDateOp;
   this.fkIdStatus = fkIdStatus;
   this.deleted = deleted;
+  this.fkIdRole = fkIdRole;
  }
 }
