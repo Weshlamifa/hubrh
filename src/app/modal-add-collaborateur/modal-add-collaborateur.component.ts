@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { CollaborateursComponent } from '../collaborateurs/collaborateurs.component';
-
+import { ServerConnectionService } from '../services/server-connection.service'; // conenction http avec le serveur
+import { Collaborator } from '../classes/collaborater';
 @Component({
   selector: 'app-modal-add-collaborateur',
   templateUrl: './modal-add-collaborateur.component.html',
   styleUrls: ['./modal-add-collaborateur.component.css']
 })
+
+@Injectable()
 export class ModalAddCollaborateurComponent implements OnInit {
 
   validatingForm: FormGroup;
@@ -34,7 +37,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
     
   }
 
-  constructor(private collaborateurs: CollaborateursComponent) {this.prestataire = false;  }
+  constructor(private collaborateurs: CollaborateursComponent,  private serverConnectionService: ServerConnectionService) {this.prestataire = false;  }
 
   /** Quand on valide le formulaire */
 
@@ -65,7 +68,9 @@ export class ModalAddCollaborateurComponent implements OnInit {
         this.collaborateurs.antiLexicographicalSortingName();
       }
       else if(!this.collaborateurs.typeSorted  && !this.collaborateurs.typeSortedFN && this.collaborateurs.notSortedYet) {}
-      this.validatingForm.reset();   
+      this.validatingForm.reset(); 
+      this.serverConnectionService.setBigChange( new Collaborator(1,name ,firstname , email, comments,linkcv, this.prestataire,date,date, 20,false))
+    .subscribe(() => "");
   }
 
   /** Quand on ferme le formulaire sans valider. Clic sur la croix ou le bouton annuler. Tous les champs

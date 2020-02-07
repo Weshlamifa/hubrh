@@ -36,8 +36,6 @@ export class CollaborateursComponent implements OnInit {
       .subscribe( data => {
         console.log("swawawa");
       })*/
-    this.serverConnectionService.setBigChange( new Collaborator(1,'loulou' ,'loulou' , 'loulou', 'loulou','loulou', true,new  Date(100),new  Date(101), 20,false))
-    .subscribe(() => "");
 
     console.log(this.showDeleted);
     this.serverConnectionService.getAll().subscribe(data => {
