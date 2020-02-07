@@ -16,4 +16,8 @@ export class ServerConnectionService {
   insertRequest(collaborator: Collaborator): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/collaborateurs/insertRequest', collaborator);
   }
+
+  updateRequest(collaborator: Collaborator): Observable<any> {
+    return this.httpClient.post<any>('http://localhost:8080/collaborateurs/updateRequest', collaborator);
+  }
 }

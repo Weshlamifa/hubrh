@@ -7,7 +7,7 @@ import { Collaborator } from '../classes/collaborater';
 @Component({
   selector: 'app-collaborateurs',
   templateUrl: './collaborateurs.component.html',
-  styleUrls: ['./collaborateurs.component.css', './navigationbar.component.css', './switch.css' ]
+  styleUrls: ['./collaborateurs.component.css', './navigationbar.component.css', './switch.css']
 })
 
 @Injectable()
@@ -30,12 +30,12 @@ export class CollaborateursComponent implements OnInit {
   } // injection du service FullTextSearchService utilisé pour la barre de recherche
 
   ngOnInit() {
-/*
-    this.serverConnectionService.setBigChange(new Collaborator(1,'loulou' ,'loulou' , 'loulou', 'loulou',
-		'loulou', true,new  Date(100),new  Date(101), 20,false))
-      .subscribe( data => {
-        console.log("swawawa");
-      })*/
+    /*
+        this.serverConnectionService.setBigChange(new Collaborator(1,'loulou' ,'loulou' , 'loulou', 'loulou',
+        'loulou', true,new  Date(100),new  Date(101), 20,false))
+          .subscribe( data => {
+            console.log("swawawa");
+          })*/
 
     console.log(this.showDeleted);
     this.serverConnectionService.getAll().subscribe(data => {
@@ -60,6 +60,8 @@ export class CollaborateursComponent implements OnInit {
       if (person.id === id) {
         //this.personList.splice(i,1);
         person.deleted = true;
+        this.serverConnectionService.updateRequest(new Collaborator(person.id, person.name, person.firstname, person.email, person.comment,
+          person.cv, /*person.prestataire*/ true, person.arrivalDateOp, person.leftDateOp, person.fkIdStatus, person.deleted)).subscribe(() => "");
         break;
       }
       i++;
