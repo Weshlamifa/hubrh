@@ -1,7 +1,8 @@
 
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { FullTextSearchService } from '../services/full-text-search.service'
 import { ServerConnectionService } from '../services/server-connection.service'; // conenction http avec le serveur
+import { Collaborator } from '../classes/collaborater';
 
 @Component({
   selector: 'app-collaborateurs',
@@ -10,7 +11,7 @@ import { ServerConnectionService } from '../services/server-connection.service';
 })
 
 @Injectable()
-export class CollaborateursComponent {
+export class CollaborateursComponent implements OnInit {
 
 
   data = ''; //texte barre de recherche
@@ -29,12 +30,22 @@ export class CollaborateursComponent {
   } // injection du service FullTextSearchService utilisé pour la barre de recherche
 
   ngOnInit() {
+/*
+    this.serverConnectionService.setBigChange(new Collaborator(1,'loulou' ,'loulou' , 'loulou', 'loulou',
+		'loulou', true,new  Date(100),new  Date(101), 20,false))
+      .subscribe( data => {
+        console.log("swawawa");
+      })*/
+    this.serverConnectionService.setBigChange( new Collaborator(1,'loulou' ,'loulou' , 'loulou', 'loulou','loulou', true,new  Date(100),new  Date(101), 20,false))
+    .subscribe(() => "");
+
     console.log(this.showDeleted);
     this.serverConnectionService.getAll().subscribe(data => {
       console.log(this.personList = data);
     });
     console.log(this.showDeleted);
   }
+
 
   changeShowDeleted() {
     if (this.showDeleted) {
