@@ -54,7 +54,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
       const linkcv = this.contactFormModalLinkCV.value;
       const photo = this.contactFormModalPhoto.value;
       const comments = this.contactFormModalComments.value;
-      this.collaborateurs.add(name, firstname, email, date ,this.prestataire, role, statut, linkcv, comments);
+      this.collaborateurs.refreshData();
       if(!this.collaborateurs.typeSorted && this.collaborateurs.typeSortedFN) {
         this.collaborateurs.lexicographicalSortingFirstName();
       }
@@ -71,6 +71,8 @@ export class ModalAddCollaborateurComponent implements OnInit {
       this.validatingForm.reset(); 
       this.serverConnectionService.insertRequest( new Collaborator(1,name ,firstname , email, comments,linkcv, this.prestataire,date,date, 20,false, 0))
     .subscribe(() => "");
+
+    this.collaborateurs.refreshData();
   }
 
   /** Quand on ferme le formulaire sans valider. Clic sur la croix ou le bouton annuler. Tous les champs
