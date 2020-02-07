@@ -10,13 +10,10 @@ export class ServerConnectionService {
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<any> {
-
     return this.httpClient.get('http://localhost:8080/collaborateurs');
   }
 
   insertRequest(collaborator: Collaborator): Observable<any> {
-    console.log(this.httpClient.post<any>('http://localhost:8080/collaborateurs/insertRequest', collaborator));
-
     return this.httpClient.post<any>('http://localhost:8080/collaborateurs/insertRequest', collaborator);
   }
 }
