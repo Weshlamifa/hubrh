@@ -14,9 +14,9 @@ export class ServerConnectionService {
     return this.httpClient.get('http://localhost:8080/collaborateurs');
   }
 
-  setBigChange(collaborator: Collaborator): Observable<any> {
-    console.log(this.httpClient.post<any>('http://localhost:8080/collaborateurs/bigChange', collaborator));
+  insertRequest(collaborator: Collaborator): Observable<any> {
+    console.log(this.httpClient.post<any>('http://localhost:8080/collaborateurs/insertRequest', collaborator));
 
-    return this.httpClient.post<any>('http://localhost:8080/collaborateurs/bigChange', collaborator);
+    return this.httpClient.post<any>('http://localhost:8080/collaborateurs/insertRequest', collaborator);
   }
 }
