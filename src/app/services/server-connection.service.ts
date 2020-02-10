@@ -13,6 +13,10 @@ export class ServerConnectionService {
     return this.httpClient.get('http://localhost:8080/collaborateurs');
   }
 
+  getAllStatus(): Observable<any> {
+    return this.httpClient.get('http://localhost:8080/status');
+  }
+
   insertRequest(collaborator: Collaborator): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/collaborateurs/insertRequest', collaborator);
   }

@@ -69,9 +69,9 @@ export class ModalAddCollaborateurComponent implements OnInit {
       }
       else if(!this.collaborateurs.typeSorted  && !this.collaborateurs.typeSortedFN && this.collaborateurs.notSortedYet) {}
       this.validatingForm.reset(); 
-      this.serverConnectionService.insertRequest( new Collaborator(1,name ,firstname , email, comments,linkcv, this.prestataire,date,date, 20,false, 0))
+      this.serverConnectionService.insertRequest( new Collaborator(1,name ,firstname , email, comments,linkcv, this.prestataire,date,date, 1,false, 0))
     .subscribe(() => "");
-
+      location.reload();
     this.collaborateurs.refreshData();
   }
 
