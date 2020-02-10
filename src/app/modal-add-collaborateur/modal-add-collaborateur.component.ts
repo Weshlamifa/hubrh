@@ -13,14 +13,14 @@ import { Collaborator } from '../classes/collaborater';
 export class ModalAddCollaborateurComponent implements OnInit {
 
   validatingForm: FormGroup;
-  prestataire: boolean = false;  
+  prestataire: boolean = false;
 
   /** A l'initialisation du formulaire, les variables sont mises à null sauf le prestaire. 
    * En effet, c'est une checkbox qui est initialisée à false par défaut.
    */
 
   ngOnInit() {
-    this.prestataire = false; 
+    this.prestataire = false;
     this.validatingForm = new FormGroup({
       contactFormModalName: new FormControl('', Validators.required),
       contactFormModalEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -34,45 +34,48 @@ export class ModalAddCollaborateurComponent implements OnInit {
       contactFormModalComments: new FormControl('')
     });
 
-    
+
   }
 
-  constructor(private collaborateurs: CollaborateursComponent,  private serverConnectionService: ServerConnectionService) {this.prestataire = false;  }
+  constructor(public collaborateurs: CollaborateursComponent, private serverConnectionService: ServerConnectionService) { this.prestataire = false; }
 
   /** Quand on valide le formulaire */
 
-  onSubmit(form: FormGroup ) {
+  onSubmit(form: FormGroup) {
+
+    const name = this.contactFormModalName.value;
+    const firstname = this.contactFormModalFirstName.value;
+    const email = this.contactFormModalEmail.value;
+    const date = this.contactFormModalDate.value;
+    this.prestataire = this.contactFormModalPrestataire.value;
+    this.prestataire = this.contactFormModalPrestataire.value;
+    const role = this.contactFormModalRole.value;
+    const statut = this.contactFormModalStatut.value;
+    const linkcv = this.contactFormModalLinkCV.value;
+    const photo = this.contactFormModalPhoto.value;
+    const comments = this.contactFormModalComments.value;
+    //this.collaborateurs.refreshData();
+    if (!this.collaborateurs.typeSorted && this.collaborateurs.typeSortedFN) {
+      this.collaborateurs.lexicographicalSortingFirstName();
+    }
+    else if (this.collaborateurs.typeSorted && !this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
+      this.collaborateurs.lexicographicalSortingName();
+    } // c'est bon
+    else if (!this.collaborateurs.typeSorted && this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
+      this.collaborateurs.lexicographicalSortingName();
+    }
+    else if (!this.collaborateurs.typeSorted && !this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
+      this.collaborateurs.antiLexicographicalSortingName();
+    }
+    else if (!this.collaborateurs.typeSorted && !this.collaborateurs.typeSortedFN && this.collaborateurs.notSortedYet) { }
+
     
-      const name = this.contactFormModalName.value;
-      const firstname = this.contactFormModalFirstName.value;
-      const email = this.contactFormModalEmail.value;
-      const date = this.contactFormModalDate.value;
-      this.prestataire = this.contactFormModalPrestataire.value;
-      this.prestataire = this.contactFormModalPrestataire.value;
-      const role = this.contactFormModalRole.value;
-      const statut = this.contactFormModalStatut.value;
-      const linkcv = this.contactFormModalLinkCV.value;
-      const photo = this.contactFormModalPhoto.value;
-      const comments = this.contactFormModalComments.value;
-      this.collaborateurs.refreshData();
-      if(!this.collaborateurs.typeSorted && this.collaborateurs.typeSortedFN) {
-        this.collaborateurs.lexicographicalSortingFirstName();
-      }
-      else if(this.collaborateurs.typeSorted && !this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
-         this.collaborateurs.lexicographicalSortingName();
-      } // c'est bon
-      else if(!this.collaborateurs.typeSorted && this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
-         this.collaborateurs.lexicographicalSortingName();
-      }
-      else if(!this.collaborateurs.typeSorted && !this.collaborateurs.typeSortedFN && !this.collaborateurs.notSortedYet) {
-        this.collaborateurs.antiLexicographicalSortingName();
-      }
-      else if(!this.collaborateurs.typeSorted  && !this.collaborateurs.typeSortedFN && this.collaborateurs.notSortedYet) {}
-      this.validatingForm.reset(); 
-      this.serverConnectionService.insertRequest( new Collaborator(1,name ,firstname , email, comments,linkcv, this.prestataire,date,date, 1,false, 0))
-    .subscribe(() => "");
-      location.reload();
+    this.serverConnectionService.insertRequest(new Collaborator(1, name, firstname, email, comments, linkcv, this.prestataire, date, date, statut , false, role))
+      .subscribe(() => "");
+    location.reload();
     this.collaborateurs.refreshData();
+    this.collaborateurs.change();
+    this.validatingForm.reset();
   }
 
   /** Quand on ferme le formulaire sans valider. Clic sur la croix ou le bouton annuler. Tous les champs
@@ -83,7 +86,7 @@ export class ModalAddCollaborateurComponent implements OnInit {
     this.validatingForm.reset();
     this.contactFormModalRole.setValue('');
     this.contactFormModalStatut.setValue('');
-    }
+  }
 
   /** Getters pour récupérer les valeurs mises dans le formulaire */
 
@@ -127,6 +130,6 @@ export class ModalAddCollaborateurComponent implements OnInit {
     return this.validatingForm.get('contactFormModalComments');
   }
 
-  
+
 }
 

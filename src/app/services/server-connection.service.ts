@@ -13,15 +13,19 @@ export class ServerConnectionService {
     return this.httpClient.get('http://localhost:8080/collaborateurs');
   }
 
-  getAllStatus(): Observable<any> {
-    return this.httpClient.get('http://localhost:8080/status');
-  }
-
   insertRequest(collaborator: Collaborator): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/collaborateurs/insertRequest', collaborator);
   }
 
   updateRequest(collaborator: Collaborator): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/collaborateurs/updateRequest', collaborator);
+  }
+  // récupération de tous les status
+    getAllStatus(): Observable<any> {
+    return this.httpClient.get('http://localhost:8080/status');
+  }
+  // récupération de tous les role
+    getAllRoles(): Observable<any> {
+    return this.httpClient.get('http://localhost:8080/roles');
   }
 }

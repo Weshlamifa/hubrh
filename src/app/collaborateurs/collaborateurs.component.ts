@@ -15,26 +15,32 @@ export class CollaborateursComponent implements OnInit {
 
 
   data = ''; //texte barre de recherche
-  res: any[]; // resultat de la requete barre de recherche
+  res: Array<any>[]; // resultat de la requete barre de recherche
   showDeleted: boolean;
 
   typeSorted: boolean = null; // retourne vrai les noms sont triés par ordre lexicographique
   typeSortedFN: boolean = null; // retourne vrai les prénoms sont triés par ordre lexicographique
   notSortedYet: boolean = true;
 
-  editField: string;
-  personList: Array<any>;
+  public editField: string;
+  public personList: Array<any>;
+  public statusList: Array<any>; // list de tous les status possibles
+  public roleList: Array<any>; // list de tous les roles disponibles
 
   constructor(private fullTextSearchService: FullTextSearchService, private serverConnectionService: ServerConnectionService) {
     this.showDeleted = false;
   } // injection du service FullTextSearchService utilisé pour la barre de recherche
 
   ngOnInit() {
-    console.log(this.showDeleted);
     this.serverConnectionService.getAll().subscribe(data => {
       console.log(this.personList = data);
     });
-    console.log(this.showDeleted);
+    this.serverConnectionService.getAllStatus().subscribe(data => {
+      console.log(this.statusList = data);
+    });
+    this.serverConnectionService.getAllRoles().subscribe(data => {
+      console.log(this.roleList = data);
+    });
   }
 
 
@@ -83,7 +89,6 @@ export class CollaborateursComponent implements OnInit {
   add(name: string, firstname: string, email: string, date: string, prestataire: boolean, role: string, statut: string, linkcv: string, comments: string) {
     const person = { id: this.personList.length + 1, name: name, firstname: firstname, email: email, deleted: false, date: date, prestataire: prestataire, role: role, statut: statut, linkcv: linkcv, comments: comments };
     this.personList.push(person);
-    console.log(this.personList);
   }
 
   // Actualise l'affichage du tableau des "res" qui contient le résultat d'un recherche

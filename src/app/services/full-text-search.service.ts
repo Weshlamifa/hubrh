@@ -11,7 +11,7 @@ export class FullTextSearchService {
   }) : true;
  }
 
-  transformSolo( data: any, sea: string): any {
+  transformSolo( data: any, sea: string): Array<any> {
     return (typeof data !== 'undefined') ? data.filter((item) => item.name.toUpperCase().startsWith(sea.toUpperCase())) : true;
   }
 }
